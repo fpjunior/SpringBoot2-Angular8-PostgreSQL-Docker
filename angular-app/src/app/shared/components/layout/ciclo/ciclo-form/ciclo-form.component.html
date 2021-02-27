@@ -1,5 +1,5 @@
 <div #divCalendar>
-  <app-steps #testeThiago [model]="modelSteps" [activeIndex]="activeIndex" style="display: inline-flex;"></app-steps>
+  <app-steps #testeThiago [model]="modelSteps" [activeIndex]="activeIndex"></app-steps>
   <ng-container *ngIf="activeIndex == 0" [ngTemplateOutlet]="semaforos"></ng-container>
   <ng-container *ngIf="activeIndex == 1" [ngTemplateOutlet]="frequencia"></ng-container>
   <!-- STEP SEMÁFOROS -->
@@ -65,9 +65,9 @@
       </div>
     </div>
 
-    <form [formGroup]="cicloForm" style=" min-height: 173px !important;" (ngSubmit)="submitConfigCiclo()">
+    <form [formGroup]="cicloForm" (ngSubmit)="submitConfigCiclo()" style=" min-height: 159px !important;">
       <div class="p-d-flex p-jc-center rows div-input-group">
-        <div class="p-mr-2 description input-frequencia">
+        <div class="p-mr-2 description input-frequencia" style="padding-top: 20px">
           <span>A cada</span>
         </div>
         <div class="p-inputgroup input-text">
@@ -77,7 +77,7 @@
       </div>
 
       <div class="p-d-flex p-jc-center rows div-input-group">
-        <div class="p-mr-2 description input-frequencia">
+        <div class="p-mr-2 description input-frequencia" style="padding-top: 20px">
           <span>Próxima Atualização</span>
         </div>
         <div class="p-inputgroup input-text">
@@ -89,28 +89,25 @@
   </ng-template>
 </div>
 
-<div class="group-button">
   <form [formGroup]="cicloForm" (ngSubmit)="submitCicloForm()">
-    <div class="button-restoreDefault">
-      <p-button [disabled]="activeRestoreDefault" type="button" class="standard" (onClick)="restoreDefault()"
-        icon="fa fa-undo" label="Restaurar Padrão">
+      <p-button [disabled]="activeRestoreDefault" type="button" class="standard" (onClick)="restoreValueDefault()"
+        icon="fa fa-undo"  label="Restaurar Padrão">
       </p-button>
-    </div>
-    <div class="generic-button p-next-preview" >
       <generic-buttons hiddenMiddle model="steps" [disableNext]="disableNext" [formGroup]="cicloForm" 
       (cancelEvent)="cancelForm()" [activeIndex]="activeIndex"
         [canceled]="true" (previousEvent)="previousEvent()" (nextEvent)="nextEvent()">
       </generic-buttons>
-    </div>
   </form>
-</div>
 
-<app-confirm-dialog (onClose)="onHideDialogConfirm()" (confirmEvent)="confirmExit()"
+<app-confirm-dialog  (onClose)="onHideDialogConfirm()" (confirmEvent)="confirmExit()"
   (cancelEvent)="showModalConfirm = false" [showModal]="showModalConfirm" header="Confirmação"
   content="Qualquer alteração realizada será perdida. Tem certeza que deseja cancelar?">
 </app-confirm-dialog>
 
-<app-confirm-dialog (onClose)="onHideDialogConfirmRestoreDefault()" (confirmEvent)="restoreValueDefault()"
+<app-confirm-dialog class="btn2" (onClose)="onHideDialogConfirmRestoreDefault()" (confirmEvent)="restoreValueDefault()"
   (cancelEvent)="showModalRestoreDefault = false" [showModal]="showModalRestoreDefault" header="Confirmação"
   content="Existem alterações realizadas e não efetivadas. Deseja salvá-las?">
 </app-confirm-dialog>
+
+<generic-response-dialog (onClose)="onHide()" (onShow)="onShow()" [showModal]="showModalResponse" [isError]="isErrorResponse" [content]="contentResponse">
+</generic-response-dialog>

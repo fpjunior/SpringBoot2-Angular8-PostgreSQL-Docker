@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  URL_API: 'http://192.168.0.30:8600/mdwbprc/api/',
+  URL_API: 'http://localhost:8080/api/',
 };
 
 /*

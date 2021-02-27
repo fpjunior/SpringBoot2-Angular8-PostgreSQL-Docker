@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,18 +25,29 @@ import lombok.var;
 @PropertySource(value = "/messages.properties", encoding = "UTF-8")
 public class IndicadorConfiguracaoController {
 
-    // private final IndicadorConfiguracaoRepository indicadorConfiguracaoRepository;
-
     @Autowired
 	private IndicadorConfiguracaoService confService;
 
-    @ApiOperation(value = "Recupera os parâmetros PADRÕES de Motor Serviço.")
+	@CrossOrigin
+	@ApiOperation(value = "Recupera os parâmetros de Motor Serviço.")
+	@GetMapping("motor-servico/parametros/{codigoIndicador}/indicador")
+	ResponseEntity<Response<IndicadorDTO>> buscarParametrosMotorServicoIndicadores(@PathVariable("codigoIndicador") Integer indicador) {
+		var retorno = new Response<IndicadorDTO>();
+		
+		retorno.setData(confService.getIndicadorConf(indicador));
+		retorno.setStatus(true);
+		
+		return ResponseEntity.ok(retorno);
+	}
+	
+	@CrossOrigin
+	@ApiOperation(value = "Recupera os parâmetros PADRÕES de Motor Serviço.")
 	@GetMapping("motor-servico/parametros-padrao/{codigoIndicador}/indicador")
-	public ResponseEntity<Response<IndicadorDTO>> buscarParametrosMotorServicoIndicadoresPadrao(@PathVariable("codigoIndicador") Integer indicador) {
+	ResponseEntity<Response<IndicadorDTO>> buscarParametrosMotorServicoIndicadoresPadrao(@PathVariable("codigoIndicador") Integer indicador) {
 		var retorno = new Response<IndicadorDTO>();
 		
 		retorno.setData(confService.getConfPadrao(indicador));
-		// retorno.setStatus(true);
+		retorno.setStatus(true);
 		
 		return ResponseEntity.ok(retorno);
 	}
