@@ -6,7 +6,7 @@
   }
 
   .group-button {
-    // padding-top: 15vh;
+    padding-top: 15vh;
   }
 
   .generic-button.p-next-preview {
@@ -31,39 +31,15 @@
     font-size: 13px;
     padding-top: 6px;
     padding-right: 12px;
-    margin-bottom: -33px;
   }
 
-  h3 {
-    font-size: 13px;
-  }
-
-  .p-col-6.ng-star-inserted {
-    // margin-bottom: 115px;
-  }
 
   input#time {
     width: 156px !important;
   }
-
-
-.p-col-6{
-  margin-top: 177px;
-  margin-bottom: -37px;
-}
-
-
-form.ng-untouched.ng-pristine.ng-invalid {
-}
-
-p-button.dismiss {
-  margin-left: 799px!important;
-}
-
-p-button.standard.submitButton.right {
-  margin-left: 654px !important;
-}
-
+  .p-col-12 {
+    margin-top: 40px;
+  }
 
   .p-invalid {
     padding-top: 40px;
@@ -88,12 +64,11 @@ p-button.standard.submitButton.right {
       min-width: 0;
       border: 1px solid #cccccc;
       font-size: 13px;
-      margin-left: 732px;
     }
   }
 
   .group-button {
-    // margin-top: 19vh;
+    margin-top: 19vh;
   }
 
   span.p-button-icon.fa.fa-pencil-alt {
@@ -129,35 +104,13 @@ p-button.standard.submitButton.right {
   }
 
   .button-restoreDefault {
-    margin-right: 647px !important;
+    float: left;
+    margin-top: 8px;
   }
 
   .p-button {
     height: 37px;
   }
-
-  .p-col-1.ng-star-inserted {
-    margin-left: 1362px;
-  }
-  .p-col-6.ng-star-inserted {
-    width: 101px;
-  }
-
-  .p-col-modified.ng-star-inserted {
-    width: 130px;
-    margin-left: 1228px;
-    margin-bottom: -45px;
-  }
-
-  .p-col-1 {
-    width: 122px;
-    margin-bottom: -37px;
-
-  }
-
-  p-button.standard {
-    margin-bottom: -233px !important;
-}
 
   .p-calendar .p-datepicker {
     top: -20vh !important;

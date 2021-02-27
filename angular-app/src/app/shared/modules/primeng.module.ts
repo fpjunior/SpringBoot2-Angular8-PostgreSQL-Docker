@@ -18,6 +18,7 @@ import { SplitButtonModule } from 'primeng/splitbutton';
 import { TableModule } from 'primeng/table';
 import { StepsModule } from 'primeng/steps';
 import { InputMaskModule } from 'primeng/inputmask';
+import { CalendarModule } from 'primeng/calendar';
 
 
 @NgModule({
@@ -42,6 +43,7 @@ import { InputMaskModule } from 'primeng/inputmask';
     InputTextModule,
     StepsModule,
     InputMaskModule,
+    CalendarModule
   ]
 })
 export class PrimengModule { }

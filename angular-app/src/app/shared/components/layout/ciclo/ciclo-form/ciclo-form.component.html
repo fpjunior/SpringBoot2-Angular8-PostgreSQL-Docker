@@ -11,7 +11,7 @@
         </div>
       </div>
 
-      <form [formGroup]="cicloForm" (ngSubmit)="submitCicloForm()">
+      <form [formGroup]="cicloForm" (ngSubmit)="submitConfigCiclo()">
         <div class="p-d-flex p-jc-center rows div-input-group">
           <div class="p-mr-2 description">
             <span class="fa fa-circle fa-2x p-circle" style="color: #219653;"></span>
@@ -19,9 +19,9 @@
           </div>
           <div class="p-inputgroup input-text">
             <p-inputMask class="input" (onBlur)="maskOut($event.target.value, 'confNivel1')"
-            (onInput)="maskRecieve($event.target.value, 'confNivel1')"
-            pTooltip="O indicador No Prazo não pode receber uma carga horária maior que 997:00" mask="99?9:99" slotChar=" "
-            formControlName="confNivel1"></p-inputMask>
+              (onInput)="maskRecieve($event.target.value, 'confNivel1')"
+              pTooltip="O indicador No Prazo não pode receber uma carga horária maior que 997:00" mask="99?9:99"
+              slotChar=" " formControlName="confNivel1"></p-inputMask>
             <small *ngIf="cicloForm.controls['confNivel1'].value > '997:00'"
               class="p-invalid required-center">
               Preenchimento inválido
@@ -35,11 +35,12 @@
             <span>Aceitável</span>
           </div>
           <div class="p-inputgroup input-text">
-            <p-inputMask 
-            (onBlur)="maskOut($event.target.value, 'confNivel2')" pTooltip="O valor Aceitável não pode ser menor que o valor No Prazo"
-            (onInput)="maskRecieve($event.target.value, 'confNivel2')" mask="99?9:99" slotChar=" " formControlName="confNivel2">
-          </p-inputMask>
-            <small class="p-invalid required-center">
+            <p-inputMask (onBlur)="maskOut($event.target.value, 'confNivel2')"
+              pTooltip="O valor Aceitável não pode ser menor que o valor No Prazo"
+              (onInput)="maskRecieve($event.target.value, 'confNivel2')" mask="99?9:99" slotChar=" "
+              formControlName="confNivel2">
+            </p-inputMask>
+            <small *ngIf="minValueAceitavel" class="p-invalid required-center">
               <!-- Valor Informado não é aceitável -->
             </small>
           </div>
@@ -50,7 +51,7 @@
             <span class="fa fa-circle fa-2x p-circle" style="color: #EB5757; margin-right: 34.5px; "></span>
             <span>Crítico</span>
           </div>
-          <div class="p-inputgroup input-text input-text-critico" >
+          <div class="p-inputgroup input-text input-text-critico">
             <input-text [formGroup]="cicloForm" controlName="critico">
             </input-text>
           </div>
@@ -65,46 +66,58 @@
       </div>
     </div>
 
-    <form [formGroup]="cicloForm" (ngSubmit)="submitConfigCiclo()" style=" min-height: 159px !important;">
+    <form [formGroup]="cicloForm" style=" min-height: 159px !important;"
+      (ngSubmit)="submitConfigCiclo()">
       <div class="p-d-flex p-jc-center rows div-input-group">
         <div class="p-mr-2 description input-frequencia" style="padding-top: 20px">
           <span>A cada</span>
         </div>
         <div class="p-inputgroup input-text">
-          <p-inputMask class="input" mask="9?9:99" slotChar=" " [formGroup]="cicloForm" 
-          formControlName="confFrequencia"></p-inputMask>
+          <p-inputMask class="input" mask="9?9:99" slotChar=" " [formGroup]="cicloForm"
+            formControlName="confFrequencia"></p-inputMask>
         </div>
+        <small *ngIf="this.f['confFrequencia'].value > '24:00'" class="p-invalid required-center msg-confFrequencia">
+          Não é permitido valores superiores a 24:00.
+        </small>
       </div>
-
       <div class="p-d-flex p-jc-center rows div-input-group">
         <div class="p-mr-2 description input-frequencia" style="padding-top: 20px">
           <span>Próxima Atualização</span>
         </div>
         <div class="p-inputgroup input-text">
-          <!-- <p-calendar></p-calendar> -->
-            <button type="button" pButton pRipple icon="fa fa-pencil-alt" styleClass="p-button-warn" (click)="editCalendar()"></button>      
+          <p-calendar #calendarInput (keyup)="maskDateCalendar($event)" [readonlyInput]="true" [locale]="br"
+            dateFormat="dd/mm/yy" [minDate]="minDate"  [maxDate]="maxDate" [readonlyInput]="true" [showTime]="true"
+            inputId="time" (onClose)="disableCalendar()" formControlName="confDataProximaAtualizacao"></p-calendar>
+          <button type="button"  pButton pRipple icon="fa fa-pencil-alt" styleClass="p-button-warn"
+            (click)="editCalendar()"></button>
         </div>
       </div>
     </form>
   </ng-template>
 </div>
 
-  <form [formGroup]="cicloForm" (ngSubmit)="submitCicloForm()">
-      <p-button [disabled]="activeRestoreDefault" type="button" class="standard" (onClick)="restoreValueDefault()"
-        icon="fa fa-undo"  label="Restaurar Padrão">
+<div class="group-button">
+  <form [formGroup]="cicloForm" (ngSubmit)="submitConfigCiclo()">
+    <div class="button-restoreDefault" style="margin-right: -48px;" >
+      <p-button [disabled]="activeRestoreDefault" type="button" class="standard" (onClick)="restoreDefault()"
+        icon="fa fa-undo" label="Restaurar Padrão">
       </p-button>
-      <generic-buttons hiddenMiddle model="steps" [disableNext]="disableNext" [formGroup]="cicloForm" 
-      (cancelEvent)="cancelForm()" [activeIndex]="activeIndex"
-        [canceled]="true" (previousEvent)="previousEvent()" (nextEvent)="nextEvent()">
+    </div>
+    <div class="generic-button p-next-preview">
+      <generic-buttons hiddenMiddle model="steps" [disableNext]="disableNext" [formGroup]="cicloForm"
+        (cancelEvent)="cancelForm()" [disableSubmit]="f['confDataProximaAtualizacao'].value < minDate" [activeIndex]="activeIndex" [canceled]="true" (previousEvent)="previousEvent()"
+        (nextEvent)="nextEvent()">
       </generic-buttons>
+    </div>
   </form>
+</div>
 
-<app-confirm-dialog  (onClose)="onHideDialogConfirm()" (confirmEvent)="confirmExit()"
+<app-confirm-dialog (onClose)="onHideDialogConfirm()" (confirmEvent)="confirmExit()"
   (cancelEvent)="showModalConfirm = false" [showModal]="showModalConfirm" header="Confirmação"
   content="Qualquer alteração realizada será perdida. Tem certeza que deseja cancelar?">
 </app-confirm-dialog>
 
-<app-confirm-dialog class="btn2" (onClose)="onHideDialogConfirmRestoreDefault()" (confirmEvent)="restoreValueDefault()"
+<app-confirm-dialog (onClose)="onHideDialogConfirmRestoreDefault()" (confirmEvent)="restoreValueDefault()"
   (cancelEvent)="showModalRestoreDefault = false" [showModal]="showModalRestoreDefault" header="Confirmação"
   content="Existem alterações realizadas e não efetivadas. Deseja salvá-las?">
 </app-confirm-dialog>
