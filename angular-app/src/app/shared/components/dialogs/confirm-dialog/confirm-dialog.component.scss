@@ -1,0 +1,29 @@
+// @import "variables.scss";
+
+:host ::ng-deep {
+  .p-dialog {
+    width: 600px;
+    height: 200px;
+    background: white;
+
+    .p-dialog-content {
+      color: #495057;
+      padding-top: 1em;
+    //   @include fontStandard;
+      height: 200px;
+    }
+
+    .p-dialog-header {
+      background: #eaeaea;
+      width: 600px;
+      height: 40px;
+      // padding-top: 10px;
+      // padding-bottom: 10px !important;
+      // background-color: #eaeaea !important;
+    }
+
+    .p-dialog-footer {
+      text-align: center;
+    }
+  }
+}

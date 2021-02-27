@@ -1,0 +1,67 @@
+@import "colors";
+@import "variables";
+
+:host ::ng-deep {
+  .p-datatable {
+    @include fontStandard;
+    .p-datatable-thead > tr > th {
+      padding: 0 0 0 0.5em;
+      text-transform: uppercase;
+      background-color: $border-cinza-claro;
+      color: $cor-cinza-escuro-padrao;
+      height: 36px;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      direction: ltr;
+      border: 1px solid $border-cinza-claro;
+
+      &:first-child {
+        width: 4em;
+      }
+
+      &:last-child {
+        text-align: center;
+      }
+    }
+
+    .p-datatable-tbody > tr {
+      color: $cor-cinza-escuro-padrao-alt;
+      height: 36px !important;
+
+      > td {
+        padding: 0;
+        border: 1px solid #cccccc;
+        &:last-child {
+          text-align: center;
+        }
+      }
+
+      &:nth-child(odd) {
+        background-color: var(--white-total);
+      }
+
+      &:nth-child(even) {
+        background-color: #f4f4f4;
+      }
+
+      &:hover {
+        background-color: $cor-azul-mais-claro-padrao;
+      }
+    }
+
+    .p-paginator {
+      .p-paginator-bottom {
+        border: 1px solid #cccccc;
+      }
+
+      .p-disabled {
+        color: #767676 !important;
+      }
+
+      .p-paginator-pages .p-paginator-page.p-highlight {
+        background-color: #2d9cdb;
+        color: white;
+      }
+    }
+  }
+}
