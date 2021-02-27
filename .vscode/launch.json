@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-Application<springboot2-app>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "fr.seblaporte.springboot2app.Application",
+            "projectName": "springboot2-app",
+            "args": ""
+        }
+    ]
+}
