@@ -295,6 +295,7 @@ export class CicloFormComponent implements OnInit {
   detectInputChanges() {
     this.f['confNivel1'].valueChanges.subscribe(change => {
       change !== '024:00' ? this.activeRestoreDefault = false : this.activeRestoreDefault = true;
+      change === '000:00' ? this.f['confNivel1'].setErrors({ 'min': true }) : this.activeRestoreDefault = false;
     });
     this.f['confNivel2'].valueChanges.subscribe(change => {
       change !== '048:00' ? this.activeRestoreDefault = false : this.activeRestoreDefault = true;
@@ -382,12 +383,11 @@ export class CicloFormComponent implements OnInit {
       err => {
         this.isErrorResponse = true;
         this.showModalResponse = true;
-        this.isErrorResponse = true;
-        this.contentResponse = tryCatchError(err);
+        console.log(err.error.message)
+        this.contentResponse = err.error.message;
         this.progressBarService.changeProgressBar(false);
       },
       () => {
-        // this.progressBarService.changeProgressBar(false);
       }
     );
   }

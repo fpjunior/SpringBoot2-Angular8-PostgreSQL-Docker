@@ -22,7 +22,7 @@
               (onInput)="maskRecieve($event.target.value, 'confNivel1')"
               pTooltip="O indicador No Prazo não pode receber uma carga horária maior que 997:00" mask="99?9:99"
               slotChar=" " formControlName="confNivel1"></p-inputMask>
-            <small *ngIf="cicloForm.controls['confNivel1'].value > '997:00'"
+            <small *ngIf="cicloForm.controls['confNivel1'].value === '000:00'"
               class="p-invalid required-center">
               Preenchimento inválido
             </small>
