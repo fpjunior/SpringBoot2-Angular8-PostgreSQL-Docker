@@ -1,3 +1,4 @@
+import { extractHourDate } from './../../../../helpers/formatString.helper';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { MenuItem } from 'primeng/api';
@@ -9,6 +10,7 @@ import { CicloService } from '../service/ciclo.service';
 import { ProgressBarService } from '../../../progress-bar/progress-bar.service';
 import { tryCatchError } from 'src/app/shared/utils/erro-handler.util';
 import { DatePipe } from '@angular/common';
+import { formatDate } from 'src/app/shared/helpers/formatString.helper';
 
 
 @Component({
@@ -309,7 +311,7 @@ export class CicloFormComponent implements OnInit {
 
   onShow = () => setTimeout(() => { if (!this.isErrorResponse) { this.showModalResponse = false; } }, 1500);
 
-  confirmExit = (): Promise<boolean> => this.route.navigate(['/home/motor-servico/config-indicador/cadastrar']);
+  confirmExit = (): Promise<boolean> => this.route.navigate(['/home']);
 
   cancelForm = (): boolean => this.showModalConfirm = true;
 
@@ -359,27 +361,34 @@ export class CicloFormComponent implements OnInit {
   }
 
   submitConfigCiclo(): void {
-    const obj = this.cicloForm.getRawValue() as Ciclo;
-    this.saveConfiguracaoCiclo(obj);
+  const obj = this.cicloForm.getRawValue() as Ciclo;
+  if(typeof obj.confDataProximaAtualizacao !== 'string'){
+    let date = formatDate(obj.confDataProximaAtualizacao);
+    let hour = extractHourDate(obj.confDataProximaAtualizacao);
+    obj.confDataProximaAtualizacao = `${date} ${hour}`
+  }
+  this.saveConfiguracaoCiclo(obj)
   }
 
   saveConfiguracaoCiclo(obj: Ciclo): void {
     this.progressBarService.changeProgressBar(true);
-    this.cicloService.getConfigCiclo().subscribe(
-      res => {
-        this.isErrorResponse = false;
-        this.contentResponse = "Configurações salva com sucesso!"
-        this.exit = true;
+    this.cicloService.saveConfigCiclo(obj).subscribe(
+      () => {
+      
         this.progressBarService.changeProgressBar(false);
         this.showModalResponse = true;
+        this.contentResponse = "Operação realizada com sucesso!"
       },
       err => {
-        this.exit = false;
         this.isErrorResponse = true;
         this.showModalResponse = true;
+        this.isErrorResponse = true;
         this.contentResponse = tryCatchError(err);
         this.progressBarService.changeProgressBar(false);
       },
+      () => {
+        // this.progressBarService.changeProgressBar(false);
+      }
     );
   }
 }

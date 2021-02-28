@@ -20,5 +20,6 @@ export const URL_UFS_ATUACAO = URL_API + VERSION_API + 'ufs-atuacao';
 export const USER_PERMISSION = URL_USER + 'permissao/';
 export const URL_RESTORE_CONFIG_CICLO = COMPLETE_URL + '/indicador-conf/motor-servico/parametros-padrao'
 export const URL_CICLO = COMPLETE_URL + '/indicador-conf/motor-servico/parametros'
+export const URL_SAVE_CICLO = COMPLETE_URL + '/indicador-conf/motor-servico/parametros'
 
 export const URL_EVENTS = COMPLETE_URL + 'evento';
