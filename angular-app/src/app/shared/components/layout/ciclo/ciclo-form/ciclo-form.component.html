@@ -66,7 +66,7 @@
       </div>
     </div>
 
-    <form [formGroup]="cicloForm" style=" min-height: 159px !important;"
+    <form [formGroup]="cicloForm" style=""
       (ngSubmit)="submitConfigCiclo()">
       <div class="p-d-flex p-jc-center rows div-input-group">
         <div class="p-mr-2 description input-frequencia" style="padding-top: 20px">
@@ -96,9 +96,9 @@
   </ng-template>
 </div>
 
-<div class="group-button">
+<div class="p-d-flex p-jc-center p-mr-2 description rows group-button">
   <form [formGroup]="cicloForm" (ngSubmit)="submitConfigCiclo()">
-    <div class="button-restoreDefault" style="margin-right: -48px;" >
+    <div class="button-restoreDefault">
       <p-button [disabled]="activeRestoreDefault" type="button" class="standard" (onClick)="restoreDefault()"
         icon="fa fa-undo" label="Restaurar Padrão">
       </p-button>

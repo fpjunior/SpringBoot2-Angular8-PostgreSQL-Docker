@@ -241,11 +241,13 @@ export class CicloFormComponent implements OnInit {
     this.cicloService.getRestoreCiclo().subscribe(configIndicador => {
       if (configIndicador !== null) {
         this.initForm(configIndicador)
+        this.f['critico'].setValue('048:01')
+        this.progressBarService.changeProgressBar(false);
+        this.detectInputChanges();
+        this.showModalRestoreDefault = false;
+
       }
-      this.f['critico'].setValue('048:01')
-      this.detectInputChanges();
-      this.progressBarService.changeProgressBar(false);
-      this.showModalRestoreDefault = false;
+
     }, err => {
       this.exit = false;
       this.isErrorResponse = true;

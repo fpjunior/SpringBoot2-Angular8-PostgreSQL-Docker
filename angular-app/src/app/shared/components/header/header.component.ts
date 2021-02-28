@@ -102,12 +102,21 @@ export class HeaderComponent implements OnInit {
         },
       },
       {
-        label: 'Ciclo',
-        icon: 'fas fa-map-marked-alt fa-lg:1em',
-        command: () => {
-          this.visibleSidebar = false;
-          this.route.navigate(['/ciclo']);
-        },
+        label: 'Motor de Serviço',
+        icon: 'fas fa-exchange-alt fa-lg:1em',
+        items: [
+         
+          {
+            style: { 'margin-left': '0px' },
+            label: 'Config Indicadores',
+            icon: 'fas fa-file-invoice-dollar fa-lg:1em',
+            command: () => {
+              this.visibleSidebar = false;
+              this.route.navigate(['/ciclo/cadastrar']);
+            },
+          },
+          { separator: true },
+        ],
       },
       {
         label: 'Main Page',

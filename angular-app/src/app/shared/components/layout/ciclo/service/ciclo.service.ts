@@ -13,17 +13,16 @@ export class CicloService {
 
   private codigoIndicadorDivergenciaPreco = 1;
 
-constructor(public http: HttpClient) { }
+  constructor(public http: HttpClient) { }
 
-getConfigCiclo(): Observable<Ciclo>{
-  return this.http.get<ApiResponseWrapper<Ciclo>>(`${URL_CICLO}/${this.codigoIndicadorDivergenciaPreco}/indicador`)
-  .pipe(timeout(2000), map(responseApi => responseApi.data))
-}
+  getConfigCiclo(): Observable<Ciclo> {
+    return this.http.get<ApiResponseWrapper<Ciclo>>(`${URL_CICLO}/${this.codigoIndicadorDivergenciaPreco}/indicador`)
+      .pipe(timeout(2000), map(responseApi => responseApi.data))
+  }
 
-getRestoreCiclo(): Observable<Ciclo> {
-  return this.http
-  .get<ApiResponseWrapper<Ciclo>>(`${URL_RESTORE_CONFIG_CICLO}/${this.codigoIndicadorDivergenciaPreco}/indicador`)
-  .pipe(timeout(2000), map(responseApi => responseApi.data))
-}
-
+  getRestoreCiclo(): Observable<Ciclo> {
+    return this.http
+      .get<ApiResponseWrapper<Ciclo>>(`${URL_RESTORE_CONFIG_CICLO}/${this.codigoIndicadorDivergenciaPreco}/indicador`)
+      .pipe(timeout(2000), map(responseApi => responseApi.data))
+  }
 }

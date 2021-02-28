@@ -1,0 +1,19 @@
+@import "src/assets/styles/generalStyle.scss";
+
+:host ::ng-deep {
+  .spinner-loading {
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 1000;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    left: 0;
+    .custom-spinner .p-progress-spinner-circle {
+      animation: custom-progress-spinner-color 6s ease-in-out infinite;
+    }
+  }
+}

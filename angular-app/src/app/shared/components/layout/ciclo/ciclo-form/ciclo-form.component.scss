@@ -19,6 +19,7 @@
 
   .p-d-flex.p-jc-center.rows.div-input-group {
     padding-bottom: 4px;
+    display: flex;
   }
 
   .button-restoreDefault {
@@ -40,6 +41,10 @@
   .p-col-12 {
     margin-top: 40px;
   }
+
+  section.p-grid {
+    display: flex;
+}
 
   .p-invalid {
     padding-top: 40px;
@@ -105,12 +110,16 @@
 
   .button-restoreDefault {
     float: left;
-    margin-top: 8px;
+    // margin-top: 8px;
   }
 
   .p-button {
     height: 37px;
   }
+
+  p-button.standard.right {
+    margin-left: 362px !important;
+}
 
   .p-calendar .p-datepicker {
     top: -20vh !important;

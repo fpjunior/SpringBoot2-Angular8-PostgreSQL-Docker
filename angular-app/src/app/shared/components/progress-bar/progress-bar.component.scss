@@ -1,0 +1,10 @@
+:host ::ng-deep {
+    .position-bar {
+      top: 61px;
+      position: absolute;
+      width: 100%;
+      .custom-progress {
+        height: 4px;
+      }
+    }
+  }

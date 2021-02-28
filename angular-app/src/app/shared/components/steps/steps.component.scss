@@ -1,4 +1,5 @@
 // @import "colors.scss";
+@import "src/assets/styles/colors.scss";
 
 :host ::ng-deep {
   .control-steps {
@@ -16,7 +17,7 @@
       }
 
       ul {
-        width: 100%;
+        width: 25%;
       }
 
       // DEMAIS STEPS
@@ -26,7 +27,7 @@
         width: 160px;
         height: 34px;
         font-size: 14px;
-        color: #767676;
+        color: $cor-cinza-escuro-padrao;
         background: #cccccc;
         border-radius: 4px;
 
@@ -46,7 +47,7 @@
         }
 
         &:active {
-          background: #2d9cdb;
+          background: $cor-azul-claro-padrao;
           > span {
             color: white !important;
           }
@@ -79,9 +80,9 @@
 
       // O STEP QUE ESTA ATIVO
       .p-steps-current {
-        background: #2d9cdb;
+        background: $cor-azul-claro-padrao;
         .p-menuitem-link {
-          background: #2d9cdb;
+          background: $cor-azul-claro-padrao;
           span {
             color: white !important;
             font-weight: 500 !important;
