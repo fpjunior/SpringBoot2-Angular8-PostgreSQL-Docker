@@ -1,3 +1,10 @@
-<p>
-  evento-dashboard works!
-</p>
+<div class="p-grid p-jc-center"> 
+  <app-table-gerencia [loading]="tableLoading" page="gerencia-eventos" [showModalDeleteDenied]="showModalDeleteDenied"
+  [showModalDelete]="showModalDelete" [cols]="tableColumns" [rowsToShow]="rows" [fullCols]="allColumns"
+  [dataToFillTable]="eventoResults" (delete)="deleteEvento($event)" (confirmDelete)="confirmDeleteEvento()"
+  [immutableCols]="['codigo', 'descricao', 'operation']" (updateColumn)="saveTableConfig($event)">
+  </app-table-gerencia>
+</div>
+
+<generic-response-dialog [content="contentResponse"] (onClose)="onHide()" [showModal]="showModalResponse">
+</generic-response-dialog>

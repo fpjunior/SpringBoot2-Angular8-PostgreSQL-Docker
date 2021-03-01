@@ -48,6 +48,33 @@ export class HeaderComponent implements OnInit {
   private initMenu = (): MenuItem[] =>
     (this.items = [
       {
+        label: 'Cadastro de Eventos',
+        icon: 'fas fa-cogs fa-lg:1em',
+        disabled: false,
+        items: [
+          {
+            style: { 'margin-left': '0px' },
+            label: 'Eventos',
+            icon: 'fas fa-file-export fa-lg:1em',
+            command: () => {
+              this.visibleSidebar = false;
+              this.route.navigate(['/home/eventos']);
+            },
+          },
+       
+          { separator: true },
+        ],
+      },
+
+      {
+        label: 'Cadastro de Eventos',
+        icon: 'fas fa-laptop fa-lg:1em',
+        command: () => {
+          this.visibleSidebar = false;
+          this.route.navigate(['/home/eventos']);
+        },
+      },
+      {
         label: 'Example',
         icon: 'fas fa-laptop fa-lg:1em',
         command: () => {
@@ -154,23 +181,7 @@ export class HeaderComponent implements OnInit {
         ],
       },
       
-      {
-        label: 'Cadastro de Evento',
-        icon: 'fas fa-cogs fa-lg:1em',
-        disabled: false,
-        items: [
-          {
-            style: { 'margin-left': '0px' },
-            label: 'Cadastrar Eventos',
-            icon: 'fas fa-list-ul fa-lg:1em',
-            command: () => {
-              this.visibleSidebar = false;
-              this.route.navigate(['eventos/cadastrar']);
-            },
-          },
-          { separator: true },
-        ],
-      },
+
      
     ]);
 

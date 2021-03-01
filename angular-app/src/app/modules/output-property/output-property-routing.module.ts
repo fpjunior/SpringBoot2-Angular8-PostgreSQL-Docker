@@ -10,7 +10,6 @@ const routes: Routes = [
         children: [
             { path: '', redirectTo: 'dashboard' },
             { path: 'dashboard', component: OutputPropertyDashboardComponent },
-            // { path: 'cadastrar', component: EventoFormComponent },
             { path: '**', redirectTo: 'home' }
           ]
     }

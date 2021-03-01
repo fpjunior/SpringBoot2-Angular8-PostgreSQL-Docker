@@ -1,4 +1,4 @@
-import { DropdownStandard } from "src/app/shared/models/dropdown.model"
+import { DropdownStandard } from 'src/app/shared/models/dropdown.model';
 
 export const baseIncidenciaArr: DropdownStandard[] = [
   { value: 1, description: 'PREÇO DE LISTA', viewValue: '1 - PREÇO DE LISTA' },

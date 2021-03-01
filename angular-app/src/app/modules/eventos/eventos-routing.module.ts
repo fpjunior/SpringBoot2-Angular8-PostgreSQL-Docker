@@ -1,10 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { EventoDashboardComponent } from './../../shared/components/layout/gerencia-eventos/evento-dashboard/evento-dashboard.component';
+import { EventoFormComponent } from './../../shared/components/layout/gerencia-eventos/evento-form/evento-form.component';
 import { EventosComponent } from './eventos/eventos.component';
-import { EventoFormComponent } from 'src/app/shared/components/layout/gerencia-evento/evento-form/evento-form.component';
-import { EventoDashboardComponent } from 'src/app/shared/components/layout/gerencia-evento/evento-dashboard/evento-dashboard.component';
-
-
 
 const routes: Routes = [
   {
