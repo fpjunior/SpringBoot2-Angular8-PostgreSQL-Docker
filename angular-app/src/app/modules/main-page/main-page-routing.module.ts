@@ -8,21 +8,21 @@ const routes: Routes = [
     path:'',
     component: MainPageComponent,
     children: [
-        { path: '', redirectTo: 'home'},
-        {
-            path: 'cadastro-evento',
-            loadChildren: () =>
-              import('../cadastro-evento/cadastro-evento.module').then(
-                (m) => m.CadastroEventoModule
-              ),
-          },
-          {
-            path: 'output-property',
-            loadChildren: () =>
-              import('../output-property/output-property.module').then(
-                (m) => m.OutputPropertyModule
-              ),
-          },
+        // { path: '', redirectTo: 'home'},
+        // {
+        //     path: 'cadastro-evento',
+        //     loadChildren: () =>
+        //       import('../eventos/eventos.module').then(
+        //         (m) => m.EventosModule
+        //       ),
+        //   },
+        //   {
+        //     path: 'output-property',
+        //     loadChildren: () =>
+        //       import('../output-property/output-property.module').then(
+        //         (m) => m.OutputPropertyModule
+        //       ),
+        //   },
     ]
 }
 ];

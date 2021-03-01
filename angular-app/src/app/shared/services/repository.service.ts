@@ -1,12 +1,11 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Directive, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { delay, map, take, timeout } from 'rxjs/operators';
 
 import { ApiResponseWrapper } from '../models/response-api-wrapper.model';
 
-@Injectable({
-  providedIn: 'root',
+@Directive({
 })
 export class RepositoryService<T> {
   constructor(protected http: HttpClient, private URL: string) {}

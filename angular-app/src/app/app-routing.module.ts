@@ -5,11 +5,9 @@ import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: 'cadastro-evento',
+    path: 'eventos',
     loadChildren: () =>
-      import('./modules/cadastro-evento/cadastro-evento.module').then(
-        (m) => m.CadastroEventoModule
-      ),
+      import('./modules/eventos/eventos.module').then((m) => m.EventosModule),
   },
   {
     path: 'example',

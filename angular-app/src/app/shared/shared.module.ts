@@ -1,6 +1,6 @@
 import { GenericResponseDialogComponent } from './components/dialogs/generic-response-dialog/generic-response-dialog.component';
 import { InputPropertyDashboardComponent } from './components/layout/input-property/input-property-dashboard/input-property-dashboard.component';
-import { EventoDashboardComponent } from './components/layout/cadastro-evento/evento-dashboard/evento-dashboard.component';
+import { EventoDashboardComponent } from './components/layout/gerencia-evento/evento-dashboard/evento-dashboard.component';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -20,7 +20,7 @@ import { CardVariacaoPrecoComponent } from './components/widgets/card-variacao-p
 import { ExampleDashboardComponent } from './components/layout/example/example-dashboard/example-dashboard.component';
 import { ExampleFormComponent } from './components/layout/example/example-form/example-form.component';
 import {ButtonModule} from 'primeng/button';
-import { EventoFormComponent } from './components/layout/cadastro-evento/evento-form/evento-form.component';
+import { EventoFormComponent } from './components/layout/gerencia-evento/evento-form/evento-form.component';
 import { CicloDashboardComponent } from './components/layout/ciclo/ciclo-dashboard/ciclo-dashboard.component';
 import { OutputPropertyDashboardComponent } from './components/layout/output-property/output-property-dashboard/output-property-dashboard.component';
 import { Example2FormComponent } from './components/example2/example2-form/example2-form.component';

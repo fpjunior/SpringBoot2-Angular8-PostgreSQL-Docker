@@ -134,15 +134,6 @@ export class HeaderComponent implements OnInit {
           },
           {
             style: { 'margin-left': '0px' },
-            label: 'Sem Rota',
-            icon: 'fas fa-calendar-minus fa-lg:1em',
-            command: () => {
-              this.visibleSidebar = false;
-              this.route.navigate(['']);
-            },
-          },
-          {
-            style: { 'margin-left': '0px' },
             label: 'Input Property',
             icon: 'fas fa-file-export fa-lg:1em',
             command: () => {
@@ -174,7 +165,7 @@ export class HeaderComponent implements OnInit {
             icon: 'fas fa-list-ul fa-lg:1em',
             command: () => {
               this.visibleSidebar = false;
-              this.route.navigate(['/cadastro-evento']);
+              this.route.navigate(['eventos/cadastrar']);
             },
           },
           { separator: true },
