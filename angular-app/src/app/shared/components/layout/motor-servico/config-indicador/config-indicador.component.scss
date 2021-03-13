@@ -1,0 +1,87 @@
+@import "src/assets/styles/colors.scss";
+
+:host ::ng-deep {
+
+  .p-d-flex.p-jc-center.rows.div-input-group {
+    padding-bottom: 4px;
+    display: flex;
+  }
+
+  button.p-button.p-component.p-ripple {
+    margin-left: 12px;
+    background-color: #306889;
+    border: 1px solid #306889;
+}
+
+
+  button.p-button.p-component.p-button-icon-only {
+    background-color: #306889;
+    border-color: #306889;
+    margin-left: -1px;
+    height: 32px;
+  }
+
+
+
+  p-button.standard.right {
+    margin-left: 362px !important;
+}
+
+  .description {
+    width: 50%;
+    text-align: right;
+    font-size: 13px;
+    padding-top: 6px;
+    padding-right: 12px;
+  }
+
+  input#time {
+    width: 130px !important;
+  }
+
+  .p-t-15em {
+    padding-top: 19em !important;
+  }
+
+  .p-invalid {
+    margin-top: 34px;
+    position: absolute;
+    font-size: 10px;
+  }
+
+  section.p-grid {
+    margin-top: -41px;
+    padding-left: -5px;
+    padding-right: -10px;
+    display: flex;
+
+  }
+
+  .input-text {
+    width: 50% !important;
+    padding-top: 10px;
+
+    input {
+      width: 106px !important;
+      min-width: 0;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      text-align: right;
+    }
+  }
+
+  .acada{
+    input {
+      width: 166px !important;
+      min-width: 0;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      text-align: right;
+    }
+  }
+
+  .p-circle {
+    margin-right: 20px;
+  }
+
+}

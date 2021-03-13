@@ -1,0 +1,103 @@
+<!-- <div style="padding: 0 5em">
+
+  <div class="p-grid p-jc-center">
+    <div class="p-col-2">
+      <input-number [formGroup]="perfilForm" label="Código" controlName="codigo"></input-number>
+    </div>
+
+    <div class="p-col-8">
+      <input-text [required]="true" [maxlength]="descricaoMaxLength" [formGroup]="perfilForm" [label]="labelDescription"
+        controlName="descricao"></input-text>
+    </div>
+  </div>
+
+  <div class="p-grid p-jc-center" *ngIf="!hasAssociar()">
+    <app-steps class="p-col-10" [model]="modelSteps" [activeIndex]="activeIndex"></app-steps>
+  </div>
+
+  <ng-container *ngIf="activeIndex == 0" [ngTemplateOutlet]="funcionalidadeStep"></ng-container>
+  <ng-container *ngIf="activeIndex == 1" [ngTemplateOutlet]="permissaoStep"></ng-container>
+
+  <ng-template #funcionalidadeStep>
+    <div class="p-grid p-jc-center">
+      <picklist *ngIf="hasAssociar()" class="p-col-10" [sourceList]="sourceList" [targetList]="targetList"
+        [sourceHeader]="picklistHeader + 'Disponíveis'" (onMoveToTarget)="onMoveToTarget($event)"
+        (onMoveToSource)="onMoveToSource($event)" (onMoveAllToTarget)="onMoveToTarget($event)"
+        (onMoveAllToSource)="onMoveToSource($event)" [targetHeader]="picklistHeader + 'Selecionadas'">
+      </picklist>
+
+      <picklist-permissao *ngIf="!hasAssociar()" class="p-col-10" [sourceList]="sourceList" [targetList]="targetList"
+        [sourceListStrings]="sourceListStrings" [targetListString]="targetListString"
+        [sourceHeader]="picklistHeader + 'Disponíveis'" (onMoveToTarget)="onMoveToTarget($event)"
+        (onMoveToSource)="onMoveToSource($event)" (onMoveAllToTarget)="onMoveToTarget($event)"
+        (onMoveAllToSource)="onMoveToSource($event)" [targetHeader]="picklistHeader + 'Selecionadas'">
+      </picklist-permissao>
+    </div>
+  </ng-template>
+  <ng-template #permissaoStep>
+    <div class="p-grid p-jc-center">
+      <p-accordion *ngFor="let item of permissionsActionsList" class="p-col-10">
+        <p-accordionTab [header]="item.headerAccordion">
+          <div *ngFor="let check of item" class="p-field-checkbox">
+            <p-checkbox [name]="check.acaoCodigo" [(ngModel)]="check.flagAtivo" binary="true"
+              (onChange)="checkboxChange($event, check.acaoCodigo, check.permissaoCodigo)" [inputId]="check.acaoCodigo">
+            </p-checkbox>
+            <label [for]="check.acaoCodigo">{{check.acaoDescricao}}</label>
+          </div>
+        </p-accordionTab>
+      </p-accordion>
+    </div>
+  </ng-template>
+</div>
+
+<div style="margin-top: 9em">
+  <form [formGroup]="perfilForm" (ngSubmit)="submitForm()">
+    <generic-buttons [disableSubmit]="!this.targetList.length" [model]="modelButtons" iconMiddle="fa fa-user"
+      labelMiddle="Editar Usuário de Origem" [formGroup]="perfilForm" (cancelEvent)="cancelForm()"
+      (middleEvent)="openModalEditarUsuario()" (previousEvent)="previousEvent()" (nextEvent)="nextEvent()"
+      [activeIndex]="activeIndex" [disableNext]="disableNext">
+    </generic-buttons>
+  </form>
+</div>
+
+<app-confirm-dialog (onClose)="onHideDialogConfirm()" (confirmEvent)="confirmExit()"
+  (cancelEvent)="showModalConfirm = false" [showModal]="showModalConfirm" header="Confirmação"
+  content="Tem certeza que deseja sair? Alterações não salvas serão descartadas.">
+</app-confirm-dialog>
+
+<generic-response-dialog (onClose)="onHide()" (onShow)="onShow()" [showModal]="showModalResponse"
+  [isError]="isErrorResponse" [content]="contentResponse">
+</generic-response-dialog>
+
+<p-dialog closeIcon="fa fa-times" [draggable]="false" styleClass="dialogEditarUsuario" [modal]="true"
+  [baseZIndex]="10000" [(visible)]="showModalEditarUsuario" header="Editar usuário de origem">
+
+  <div class="p-grid p-jc-start ">
+
+    <div class="form-label p-col-12">
+      <label class="required" for="usuarioOrigem">Usuário de Origem </label>
+      <p-autoComplete [(ngModel)]="usuarioOrigem" [suggestions]="optionsUsuarioOrigem"
+        (completeMethod)="getTodosUsuarioOrigem($event)" (onSelect)="usuarioOrigemSelected($event)" field="nome"
+        [minLength]="3"></p-autoComplete>
+    </div>
+    <div class="form-label p-col-6">
+      <label class="required" for="unidadePadrao">Unidade Padrão</label>
+      <p-dropdown [(ngModel)]="unidadePadrao" optionLabel="codigoUnidadeComNome" [disabled]="disabledUnidadePadrao"
+        [options]="optionsUnidadePadrao" placeholder="SELECIONE"></p-dropdown>
+    </div>
+  </div>
+  <div class="p-grid p-jc-center m-t-1em">
+    <div class="p-col">
+      <p-button type="submit" (click)="saveUsuarioOrigem()" class="standard submitButton right" icon="fas fa-save"
+        label="Salvar" [disabled]="!usuarioOrigem || !unidadePadrao">
+      </p-button>
+    </div>
+    <div class="p-col">
+      <p-button type="button" (click)="showModalEditarUsuario = false" class="dismiss" icon="fa fa-times-circle"
+        label="Cancelar"></p-button>
+    </div>
+  </div>
+
+</p-dialog> -->
+
+<p>testando perfil</p>

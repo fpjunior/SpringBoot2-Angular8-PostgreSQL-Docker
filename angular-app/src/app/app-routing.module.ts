@@ -19,8 +19,8 @@ const routes: Routes = [
   {
     path: 'ciclo',
     loadChildren: () =>
-      import('./modules/ciclo/ciclo.module').then(
-        (m) => m.CicloModule
+      import('./modules/motor-servico/motor-servico.module').then(
+        (m) => m.MotorServicoModule
       ),
   },
   {
@@ -43,6 +43,13 @@ const routes: Routes = [
       import('./modules/home/home.module').then(
         (m) => m.HomeModule
       ),
+  },
+
+  { path: 'gerencia-usuario',
+  loadChildren: () =>
+  import('./modules/gerencia-usuario/gerencia-usuario.module').then(
+    (m) => m.GerenciaUsuarioModule
+  ),
   },
 
   { path: 'input-property',

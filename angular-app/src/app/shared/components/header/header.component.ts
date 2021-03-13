@@ -167,6 +167,14 @@ export class HeaderComponent implements OnInit {
               this.visibleSidebar = false;
               this.route.navigate(['input-property']);
             },
+          },   {
+            style: { 'margin-left': '0px' },
+            label: 'Gerencia Usuário',
+            icon: 'fas fa-file-export fa-lg:1em',
+            command: () => {
+              this.visibleSidebar = false;
+              this.route.navigate(['gerencia-usuario']);
+            },
           },
           {
             style: { 'margin-left': '0px' },

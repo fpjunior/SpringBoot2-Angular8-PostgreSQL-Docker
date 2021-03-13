@@ -1,0 +1,10 @@
+<div class="p-grid p-jc-center">
+  <app-table-gerencia page="gerencia-usuario" [immutableCols]="['codigo','nome','operation']" [loading]="tableLoading"
+    [showModalDelete]="showModalDelete" (closeDelete)="showModalDelete = false" [fullCols]="allColumns" [rowsToShow]="rows"  [cols]="tableColumns" [dataToFillTable]="usuarioResults"
+    (delete)="eventAssociarPerfil($event)" (updateColumn)="saveTableConfig($event)"
+    (confirmDelete)="confirmDeleteUsuario()">
+  </app-table-gerencia>
+</div>
+
+<generic-response-dialog [showModal]="showModalResponse" [isError]="isErrorResponse" [content]="contentResponse">
+</generic-response-dialog>

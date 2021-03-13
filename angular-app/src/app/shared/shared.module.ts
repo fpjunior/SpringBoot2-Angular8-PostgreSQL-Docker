@@ -26,11 +26,12 @@ import { StepsComponent } from './components/steps/steps.component';
 import { InputPropertyFormComponent } from './components/layout/input-property/input-property-form/input-property-form.component';
 import { PicklistComponent } from './components/fields/picklist/picklist.component';
 import { DialogPicklistComponent } from './components/dialogs/dialog-picklist/dialog-picklist.component';
-import { CicloFormComponent } from './components/layout/ciclo/ciclo-form/ciclo-form.component';
 import { GenericButtonsComponent } from './components/buttons/generic-buttons/generic-buttons.component';
 import { InputTextComponent } from './components/fields/input-text/input-text.component';
 import { EventoDashboardComponent } from './components/layout/gerencia-eventos/evento-dashboard/evento-dashboard.component';
-import { CicloDashboardComponent } from './components/layout/ciclo/ciclo-dashboard/ciclo-dashboard.component';
+import { CicloDashboardComponent } from './components/layout/motor-servico/ciclo-dashboard/ciclo-dashboard.component';
+import { ConfigIndicadorComponent } from './components/layout/motor-servico/config-indicador/config-indicador.component';
+import { UsuarioDashboardComponent } from './components/layout/gerencia-usuario/usuario/usuario-dashboard/usuario-dashboard.component';
 
 
 @NgModule({
@@ -46,6 +47,7 @@ import { CicloDashboardComponent } from './components/layout/ciclo/ciclo-dashboa
     Example2FormComponent,
     InputPropertyDashboardComponent,
     InputPropertyFormComponent,
+    UsuarioDashboardComponent,
 
     // CORE
     StepsComponent,
@@ -54,7 +56,7 @@ import { CicloDashboardComponent } from './components/layout/ciclo/ciclo-dashboa
     EventoDashboardComponent,
     EventoFormComponent,
     CicloDashboardComponent,
-    CicloFormComponent,
+    ConfigIndicadorComponent,
     
 
     // DIALOGS
@@ -98,7 +100,7 @@ import { CicloDashboardComponent } from './components/layout/ciclo/ciclo-dashboa
     ProgressBarComponent,
     OutputPropertyDashboardComponent,
     CicloDashboardComponent, 
-    CicloFormComponent,
+    ConfigIndicadorComponent, 
     PicklistComponent,
     
     // CORE

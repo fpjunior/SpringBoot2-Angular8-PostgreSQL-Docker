@@ -22,4 +22,11 @@ export const URL_RESTORE_CONFIG_CICLO = COMPLETE_URL + '/indicador-conf/motor-se
 export const URL_CICLO = COMPLETE_URL + '/indicador-conf/motor-servico/parametros'
 export const URL_SAVE_CICLO = COMPLETE_URL + '/indicador-conf/motor-servico/parametros'
 
-export const URL_EVENTS = COMPLETE_URL + 'evento';
+export const URL_PROFILE = COMPLETE_URL + 'teste'; //implementar futuramente
+export const URL_EVENTS = COMPLETE_URL + 'teste'; //implementar futuramente
+export const URL_USER_ORIGIN_ACCESS = COMPLETE_URL + 'teste'; //implementar futuramente
+export const URL_USER_UNIT = COMPLETE_URL + 'teste'; //implementar futuramente
+export const URL_PERMIT = COMPLETE_URL + 'teste'; //implementar futuramente
+export const URL_USER_ORIGIN = COMPLETE_URL + 'teste'; //implementar futuramente
+export const URL_PROFILE_ASSOCIATES = COMPLETE_URL + 'teste'; //implementar futuramente
+export const USER_ASSOCIATES = COMPLETE_URL + 'teste'; //implementar futuramente

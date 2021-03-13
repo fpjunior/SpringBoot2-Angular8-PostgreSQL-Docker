@@ -1,0 +1,30 @@
+@import "src/assets/styles/tables.scss";
+
+
+:host ::ng-deep {
+  .codigo-gerencia-usuario,
+  .codigo-gerencia-perfil,
+  .codigo-gerencia-eventos,
+  .codigoUnidade-ufs-atuacao,
+  .aliquotaImpostoRenda-ufs-atuacao,
+  .adicionalImpostoRenda-ufs-atuacao,
+  .aliquotaContribuicaoSocial-ufs-atuacao {
+    text-align: right !important;
+  }
+
+  .ativo-gerencia-usuario,
+  #operation-ufs-atuacao,
+  .operation-ufs-atuacao,
+  .operation-gerencia-usuario,
+  #operation-gerencia-usuario,
+  .operation-gerencia-perfil,
+  #operation-gerencia-perfil,
+  .operation-gerencia-evento,
+  #operation-gerencia-evento {
+    text-align: center !important;
+  }
+
+  .first-col {
+    width: 12vw !important;
+  }
+}

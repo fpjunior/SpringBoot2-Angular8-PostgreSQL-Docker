@@ -1,0 +1,8 @@
+@import "src/assets/styles/variables.scss";
+
+:host ::ng-deep {
+  .p-component {
+    @include fontStandard;
+    font-weight: unset;
+  }
+}
