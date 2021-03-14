@@ -1,16 +1,17 @@
-import { AbstractControl } from '@angular/forms';
 import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { LazyLoadEvent } from 'primeng/api';
 import { Table } from 'primeng/table';
 import { TableStandard } from 'src/app/shared/models/table.model';
+import { exportPDF, exportXLSX } from 'src/app/shared/utils/exports.util';
+import { formatPercent } from 'src/app/shared/helpers/formatString.helper';
 
 @Component({
   selector: 'app-table-gerencia',
   templateUrl: './table-gerencia.component.html',
   styleUrls: ['./table-gerencia.component.scss']
 })
-export class TableGerenciaComponent implements OnInit {
+export class TableGerenciaComponent implements OnInit, AfterViewInit {
 
   totalRecords: number;
   selectedColumns: any;
@@ -50,30 +51,28 @@ export class TableGerenciaComponent implements OnInit {
   /**
    * MODAIS DE DELETAR
    */
-
   @Input() showModalDelete = false;
   @Input() showModalDeleteDenied = false;
   @Input() mostrarBuscar = true;
   @Output() delete = new EventEmitter();
   @Output() updateColumn = new EventEmitter();
+  @Output() closeDelete = new EventEmitter();
   @Output() confirmDelete = new EventEmitter();
+
+
+  @Input() globalFilterFields?: string[];
 
   constructor(
     private route: Router
   ) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
+    if (this.numberDataPerPage < 10 || !this.numberDataPerPage) {
+      this.numberDataPerPage = 10;
+    }
   }
 
-  ajustPercent(value: number): string {
-    let strReturn = value.toString().replace(".", ",");
-    if(strReturn.length <= 2 ) {
-      return strReturn + ",00";
-    } else if (strReturn.length == 3) {
-      return strReturn + "0";
-    }
-    return strReturn;
-  }
+  ajustPercent = (value: number): string => formatPercent(value);
 
   ngAfterViewInit(): void {
     setTimeout(() => {
@@ -89,47 +88,42 @@ export class TableGerenciaComponent implements OnInit {
     }
   }
 
-  // exportPdf = (): void => exportPDF(this.cols, this.dataToFillTable, this.page);
+  exportPdf = (): void => exportPDF(this.cols, this.dataToFillTable, this.page);
 
-  // exportExcel = (): void => exportXLSX(this.dataToFillTable, this.page);
+  exportExcel = (): void => exportXLSX(this.dataToFillTable, this.page);
 
   showModalSelectColumns = (): boolean => this.showModalColumn = true;
 
-  onHideDialogConfirmExclude = (): boolean => this.showModalDelete = false;
+  onHideDialogConfirmExclude = () => {
+    this.closeDelete.emit(false);
+    this.showModalDelete = false;
+  }
 
-  onHideDialogConfirmExcludeDenied = (): boolean => this.showModalDeleteDenied = false;
+  onHideDialogConfirmExcludeDenied = () => {
+    this.closeDelete.emit(false);
+    this.showModalDeleteDenied = false;
+  }
 
   colReorderEvent = (e): void => {
     this.updateColumn.emit({ $event: e.columns, rowsPerPage: this.numberDataPerPage });
   }
 
-  colResizeEvent(e) {
-    // this.setTableColumnStyleMin(this.page)
-  }
   onHideDialogTable = (): void => {
     this.showModalColumn = false;
-    // setTimeout(() => { this.setTableColumnStyle(this.page); }, 500);
   }
 
   newRegister = (page: string): Promise<boolean> => {
     switch (page) {
-      case 'ciclo':
-        return this.route.navigate(['/ciclo/cadastrar'])
+   
+      case 'gerencia-usuario':
+        return this.route.navigate(['/home/gerencia-usuario/usuario/cadastrar'])
     }
-  }
+  };
 
   editRegister = (page: string): string => {
     switch (page) {
-      case 'ciclo':
-        return '/ciclo/cadastrar'
       case 'gerencia-usuario':
         return '/home/gerencia-usuario/usuario/cadastrar'
-      case 'gerencia-perfil':
-        return '/home/gerencia-usuario/perfil/cadastrar'
-      case 'ufs-atuacao':
-        return '/home/ufs-atuacao/cadastrar'
-      default:
-        return '/home'
     }
   };
 
@@ -140,4 +134,11 @@ export class TableGerenciaComponent implements OnInit {
   loadLazyTable(event: LazyLoadEvent): void {
   }
 
+  sort(event) {
+    console.log(event.field);
+  }
+
+  filter(event) {
+    console.log(event.field);
+  }
 }

@@ -31,3 +31,53 @@ body {
     background: $scroll-bar-hover;
   }
 }
+
+.p-column-filter-overlay {
+  .p-column-filter-operator,
+  .p-column-filter-matchmode-dropdown,
+  .p-column-filter-add-rule {
+    display: none !important;
+  }
+
+  .p-column-filter-constraint::before {
+    // color: red;
+    // content: "CONTÉM";
+  }
+
+  p-tristatecheckbox {
+    .p-checkbox-icon {
+      position: absolute;
+      width: 100%;
+    }
+
+    .pi-check {
+      &::before {
+        content: "\e909";
+        margin-left: 6.599999em;
+      }
+
+      &::after {
+        content: "Ativo";
+        font-size: 16px;
+        font-family: Roboto;
+        color: #2a78ad;
+        margin-left: 1em;
+      }
+    }
+
+    .pi-times {
+      &::before {
+        content: "\e90b";
+        margin-left: 6.599999em;
+      }
+
+      &::after {
+        content: "Inativo";
+        font-size: 16px;
+        font-family: Roboto;
+        color: #2a78ad;
+        margin-left: 1em;
+      }
+    }
+  }
+}

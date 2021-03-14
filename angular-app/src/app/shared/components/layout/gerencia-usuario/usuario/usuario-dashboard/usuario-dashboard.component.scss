@@ -1,70 +1,48 @@
+@import "src/assets/styles/variables.scss";
 
 :host ::ng-deep {
-    .m-t-1em.ng-star-inserted {
-        margin-top: 38px;
-        width: 100%;
-        box-shadow: 0 15px 67px 1px rgb(0 0 0 / 55%), 0 12px 179px 0 rgb(0 0 0 / 32%), 0 11px 14px 0 rgb(0 0 0 / 30%);
-    }
+  .p-component {
+    @include fontStandard;
+    font-weight: unset;
+  }
 
-    .p-calendar .p-button.p-button-icon-only {
-        height: 32px !important;
-    }
+  input.uppercase.p-inputtext.p-component {
+    width: 341px;
+    box-shadow: 0 7px 5px 0px rgb(0 0 0 / 26%), 0 -1px 52px 0 rgb(0 0 0 / 0%), 0 0px 0px 0 rgb(0 0 0);
+  }
 
-    button.tableButton.p-button.p-component.p-button-icon-only {
-        width: 30px;
-        height: 30px;
-    }
+  app-table-gerencia {
+    width: 100%;
+  }
 
-    .p-paginator-bottom.p-paginator.p-component.ng-star-inserted {
-        font-size: 13px;
-        font-family: system-ui;
-    }
+  .p-button:enabled:hover {
+    background: #282828;
+    color: #fff;
+    border-color: #282828;
+}
 
-    tr.ng-star-inserted {
-        font-family: system-ui;
-    }
+  .p-button {
+    color: #fff;
+    background: #595959;
+    border: 1px solid #595959;
+    margin-left: 12px;
+    box-shadow: 0 7px 5px 0px rgb(0 0 0 / 26%), 0 -1px 52px 0 rgb(0 0 0 / 0%), 0 0px 0px 0 rgb(0 0 0);
+}
 
-    .p-datatable-resizable .p-datatable-tbody>tr>td, .p-datatable-resizable .p-datatable-tfoot>tr>td, .p-datatable-resizable .p-datatable-thead>tr>th {
-        overflow: hidden;
-        white-space: nowrap;
-        font-size: 13px;
-    }
+button.tableButton.p-button.p-component.p-button-icon-only.ng-star-inserted {
+  background: #c76868;
+  border-radius: 25px;
+  border: 1px solid #c76868;
+}
 
-    .p-datatable .p-datatable-thead > tr > th {
-        padding: 0rem 1rem;
-    }
+button.tableButton.p-button.p-component.p-button-icon-only {
+  border-radius: 35px;
+  margin-right: 2px;
+  box-shadow: 0 7px 4px -1px rgb(0 0 0 / 47%), 0 -1px 13px 0 rgb(0 0 0 / 14%), 0 20px 32px 0 rgb(0 0 0 / 19%);
+  margin: -4px;
+  left: 12px;
+}
 
-    button.tableButton.p-button.p-component.p-button-icon-only {
-        width: 30px;
-        height: 30px;
-        background: #f8f9fa;
-        color: #fff;
-        border-color: #f8f9fa;
-    }
 
-    span.p-button-icon.fas.fa-cog {
-        color: #75757d;
-    }
 
-    span.p-button-icon.fas.fa-trash-alt {
-        color: #75757d;
-        box-shadow: 0 15px 67px 1px rgb(0 0 0 / 55%), 0 12px 179px 0 rgb(0 0 0 / 32%), 0 11px 14px 0 rgb(0 0 0 / 30%);
-
-    }
-
-    .p-datatable-wrapper.ng-star-inserted {
-        height: 421px;
-    }
-
-    .p-datepicker:not(.p-datepicker-inline) {
-      
-        box-shadow: 0 25px 37px 15px rgb(0 0 0 / 34%), 0 12px 100px 0 rgb(0 0 0 / 51%), 0 11px 14px 0 rgb(0 0 0 / 33%);
-    }
-
-    .p-datatable .p-datatable-tbody > tr {
-        background: #ebebeb;
-     
-    }
-
- 
 }

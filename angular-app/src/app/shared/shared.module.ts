@@ -33,6 +33,7 @@ import { CicloDashboardComponent } from './components/layout/motor-servico/ciclo
 import { ConfigIndicadorComponent } from './components/layout/motor-servico/config-indicador/config-indicador.component';
 import { UsuarioDashboardComponent } from './components/layout/gerencia-usuario/usuario/usuario-dashboard/usuario-dashboard.component';
 import { TableLogsComponent } from './components/tables/table-logs/table-logs.component';
+import { DialogTableColumnComponent } from './components/dialogs/dialog-table-column/dialog-table-column.component';
 
 
 @NgModule({
@@ -65,6 +66,7 @@ import { TableLogsComponent } from './components/tables/table-logs/table-logs.co
     ConfirmDialogComponent,
     DialogPicklistComponent,
     GenericResponseDialogComponent,
+    DialogTableColumnComponent,
 
     // CARDS
     CardServicoAbertoComponent,
@@ -81,8 +83,6 @@ import { TableLogsComponent } from './components/tables/table-logs/table-logs.co
     // BUTTONS
     GenericButtonsComponent,
 
-
-    
   ],
 
   imports: [

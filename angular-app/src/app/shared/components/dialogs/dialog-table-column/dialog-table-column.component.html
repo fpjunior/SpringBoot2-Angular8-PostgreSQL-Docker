@@ -1,0 +1,36 @@
+<div class="g-dialog">
+
+  <p-dialog closeIcon="fa fa-times" [draggable]="false" [modal]="true" [baseZIndex]="10000" [(visible)]="showModal"
+    (onHide)="onCloseParent()" (onShow)="onShowParent()" header="Configurações">
+    <p-header style="position: absolute; right: 3em; top: 1vh;">
+      <p-button class="button-outlined mr" (click)="exportExcel.emit()" pTooltip="Exportar Excel"
+        icon="fas fa-file-excel"></p-button>
+      <!-- <p-button class="button-outlined" (click)="exportPdf.emit()" pTooltip="Exportar PDF" icon="fas fa-file-pdf">
+      </p-button> -->
+    </p-header>
+
+    <div class="p-grid p-jc-start check-box-list">
+      <div class="p-col-12">
+        <span> {{fullCols.length == immutables.length ? "Não há colunas para seleção!" : "Selecione as colunas que ficarão visíveis" }}
+        </span>
+      </div>
+      <div class="p-col-3" *ngFor="let col of fullCols; let i = index" [hidden]="disableOneCheck(col, i)">
+        <p-checkbox pTooltip="col.hintName" binary="true" (onChange)="checkDisable($event.checked)" [inputId]="'columnCheck' + col.field " [label]="col.header"
+          [(ngModel)]="col.showCol">
+        </p-checkbox>
+      </div>
+    </div>
+
+    <ng-template pTemplate="footer">
+      <p-button type="button" icon="fa fa-undo" class="standard" [disabled]="fullCols.length == immutables.length" (click)="returnColumns()"
+        label="Restaurar Padrão">
+      </p-button>
+      <p-button type="button" icon="fa fa-check-square" [disabled]="disableCheckAll || fullCols.length == immutables.length" (click)="checkAllColumns()"
+        class="standard" label="Marcar Todos"></p-button>
+      <p-button type="button" icon="fa fa-save" class="standard" [disabled]="fullCols.length == immutables.length"
+        (click)="saveColumn.emit(arrayToSend()); onCloseParent()" label="Salvar">
+      </p-button>
+    </ng-template>
+  </p-dialog>
+
+</div>

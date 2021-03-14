@@ -7,20 +7,38 @@
     .p-datatable-thead > tr > th {
       padding: 0 0 0 0.5em;
       text-transform: uppercase;
-      background-color: $border-cinza-claro;
+      background-color: #ccc;
       color: $cor-cinza-escuro-padrao;
       height: 36px;
       text-overflow: ellipsis;
       white-space: nowrap;
       direction: ltr;
-      border: 1px solid $border-cinza-claro;
+      border: 1px solid #ccc;
+      min-width: 4em !important;
 
       &:first-child {
         width: 4em;
       }
 
       &:last-child {
-        text-align: center;
+        // padding-left: 0;
+        // text-align: center;
+        // width: 7em;
+      }
+
+      p-sorticon {
+        .p-sortable-column-icon {
+          margin-bottom: 0.5vh;
+          font-size: 14px;
+        }
+      }
+
+      .fas .fa-cog {
+        font-size: 14px;
+      }
+
+      .pi-filter-icon {
+        font-size: 14px;
       }
     }
 
@@ -31,13 +49,31 @@
       > td {
         padding: 0;
         border: 1px solid #cccccc;
-        &:last-child {
-          text-align: center;
+        padding-left: 1em;
+        padding-right: 0.5em;
+
+        text-overflow: ellipsis;
+        text-transform: uppercase;
+        &:focus {
+          border: none;
+          outline: none;
         }
+        &:last-child {
+          // text-align: center;
+          // padding-left: 0;
+        }
+
+        // .fa-lg {
+        //   font-size: 14px !important;
+        // }
       }
 
       &:nth-child(odd) {
-        background-color: var(--white-total);
+        // background-color: var(--white-total);
+        background-color: #e6e5e5;
+
+        
+        
       }
 
       &:nth-child(even) {
@@ -64,4 +100,32 @@
       }
     }
   }
+
+  .sub-grid {
+    background-color: #f4f4f4 !important;
+
+    &:hover {
+      background-color: #f4f4f4 !important;
+    }
+    .sub-grid-td {
+      padding: 1em !important;
+    }
+  }
+}
+
+.p-column-filter-overlay-menu {
+  span,
+  .p-dropdown-label,
+  .p-column-filter-add-rule .p-button-text .p-button-label,
+  .p-column-filter-buttonbar .p-button .p-button-label {
+    font-size: 13px;
+  }
+}
+
+.m-t-1em {
+  box-shadow: 1px 0px 14px 9px rgb(0 0 0 / 20%), 0 1px 1px 0 rgb(0 0 0 / 14%), 0 1px 3px 0 rgb(0 0 0 / 12%);
+}
+
+.p-tooltip {
+  z-index: 99999 !important;
 }

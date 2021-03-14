@@ -1,7 +1,12 @@
-<app-table-logs page="reajuste-preco" [cols]="tableColumns" [fullCols]="allColumns" [rowsToShow]="rows"
-[immutableCols]="['codigo']" (updateColumn)="saveTableConfig($event)" [totalRecords]="totalRecords" [first]="first"
-(lazyTableData)="getTableData($event)" (getData)="generateLog($event)" [showTable]="showTable" 
-[loading]="tableLoading" [dataToFillTable]="dataToFillTable"></app-table-logs>
-
-<generic-response-dialog [content]="contentResponse" (onClose)="onHide()" [showModal]="showModalResponse">
-</generic-response-dialog>
+<div class="p-grid p-jc-center">
+    <app-table-gerencia [loading]="tableLoading" page="gerencia-usuarios" [showModalDeleteDenied]="showModalDeleteDenied"
+      [showModalDelete]="showModalDelete" [cols]="tableColumns" [fullCols]="allColumns" [rowsToShow]="rows"
+      (closeDelete)="showModalDelete = false; showModalDeleteDenied = false" [dataToFillTable]="usuarioResults"
+      (delete)="deleteUsuario($event)" (confirmDelete)="confirmDeleteUsuario()"
+      [immutableCols]="['codigoComNome', 'operation']" [globalFilterFields]="['codigo', 'codigoComNome']" (updateColumn)="saveTableConfig($event)">
+    </app-table-gerencia>
+  </div>
+  
+  
+  <generic-response-dialog [content]="contentResponse" (onClose)="onHide()" [showModal]="showModalResponse">
+  </generic-response-dialog>
