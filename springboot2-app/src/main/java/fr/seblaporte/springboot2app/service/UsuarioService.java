@@ -11,6 +11,9 @@ import org.springframework.transaction.annotation.Transactional;
 import fr.seblaporte.springboot2app.dto.UsuarioDTO;
 import fr.seblaporte.springboot2app.model.Usuario;
 import fr.seblaporte.springboot2app.repository.UsuarioRepository;
+import fr.seblaporte.springboot2app.util.DataUtil;
+
+import java.time.LocalDateTime;
 
 @Service
 public class UsuarioService {
@@ -36,6 +39,7 @@ public class UsuarioService {
 		List<Usuario> usuarios = this.usuarioRespository.buscarTodos(filtro);
 		// conveter tudo em dto;
 		usuarios.forEach((e) -> usuariosDTOs.add(this.toDTO(e)));
+		
 		return usuariosDTOs;
 	}
 
@@ -79,7 +83,7 @@ public class UsuarioService {
 		dto.setNome(entity.getNome());
 		dto.setEmail(entity.getEmail());
 		dto.setSenha(entity.getSenha());
-
+		dto.setDataSenha(DataUtil.converterToDataUtil(LocalDateTime.now().plusDays(1)));
 		return dto;
 	}
 

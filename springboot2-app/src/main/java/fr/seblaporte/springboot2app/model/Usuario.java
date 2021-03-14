@@ -1,5 +1,8 @@
 package fr.seblaporte.springboot2app.model;
 
+import java.util.Calendar;
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Convert;
 import javax.persistence.Entity;
@@ -8,10 +11,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
-import fr.seblaporte.springboot2app.enums.TipoEvento;
-import fr.seblaporte.springboot2app.enums.TipoUsuario;
-import fr.seblaporte.springboot2app.enums.convert.TipoEventoConverter;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -39,5 +41,10 @@ public class Usuario extends BaseEntity {
 
 	@Column(name = "T005_C005_", length = 200)
 	private String senha;
+
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "T005_C003_")
+	private Date dataSenha;
+
 
 }

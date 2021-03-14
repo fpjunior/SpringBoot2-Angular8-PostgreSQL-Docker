@@ -1,16 +1,19 @@
 package fr.seblaporte.springboot2app.dto;
 
+import java.util.Calendar;
+import java.util.Date;
+
+import javax.persistence.Column;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonGetter;
 
-import fr.seblaporte.springboot2app.enums.TipoUsuario;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import io.swagger.annotations.ApiModelProperty.AccessMode;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
-@Getter
-@Setter
+@Data
 @ApiModel(value = "UsuarioDTO - Usuario")
 public class UsuarioDTO {
 
@@ -27,9 +30,11 @@ public class UsuarioDTO {
 
 	@ApiModelProperty(value = "Campo email.")
 	private String email;
+
 	@ApiModelProperty(value = "Campo senhha.")
 	private String senha;
 
-
+	@JsonFormat(pattern = "dd/MM/yyyy HH:mm")
+	private Date dataSenha;
 
 }
