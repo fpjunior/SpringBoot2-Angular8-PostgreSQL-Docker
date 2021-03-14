@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MenuItem } from 'primeng/api';
@@ -14,7 +15,8 @@ import { tableArr } from './model/table.model';
 @Component({
   selector: 'app-usuario-dashboard',
   templateUrl: './usuario-dashboard.component.html',
-  styleUrls: ['./usuario-dashboard.component.scss']
+  styleUrls: ['./usuario-dashboard.component.scss'],
+  providers: [DatePipe]
 })
 export class UsuarioDashboardComponent implements OnInit {
 
@@ -31,141 +33,144 @@ export class UsuarioDashboardComponent implements OnInit {
   usuario;
   private id: number;
   rows = 10;
+  dataToFillTable
+
+  storageData
+  showTable = false;
+
+
+  page = 0;
+  size;
+  sort = "";
+  totalRecords;
+  first = 0;
+  filters = "";
+
   breadcrumbItems: MenuItem[] = [{ label: `Gerência de Usuários` }, { label: `Usuários` }];
 
   constructor(
     private route: Router,
     private usuarioService: UsuarioService,
     private breadcrumbService: BreadcrumbService,
-    // private progressBarService: ProgressBarService,
-    private storageDBService: StorageDBService
+    private progressBarService: ProgressBarService,
+    private storageDBService: StorageDBService,
+    private datePipe: DatePipe,
+
+
   ) { }
 
   ngOnInit(): void {
-    // this.getUsuarios();
-    this.getTableConfig();
 
     this.breadcrumbService.setBreadcrumb(this.breadcrumbItems);
   }
 
-  getUsuarios(): void {
-    // this.progressBarService.changeProgressBar(true);
-    this.tableLoading = true;
-    this.usuarioService.listAll().subscribe(
-      usuarios => {
-        let auxUsuarios = usuarios;
-        auxUsuarios = this.eventsAdapter(auxUsuarios);
-        this.usuarioResults = auxUsuarios;
-        this.tableLoading = false;
-      },
-      err => {
-        this.showModalResponse = true;
-        this.contentResponse = tryCatchError(err);
-        this.tableLoading = false;
-        // this.progressBarService.changeProgressBar(false);
-      }, () => {
-        // this.progressBarService.changeProgressBar(false);
-      })
-  }
-
-  private getTableConfig(): void {
-    this.tableLoading = true;
-    this.storageDBService.getStorage(this.tableName).subscribe(
-      column => {
-        const auxColumn: any = column;
-
-        // Caso dê alguma bronca no banco 
-        if (typeof auxColumn.data.usuarioTable.usuarioTable == "boolean" || !auxColumn.data.usuarioTable.usuarioTable) {
-          this.showModalResponse = true;
-          this.tableLoading = false;
-          this.contentResponse = "Ocorreu um erro ao recuperar os dados da tabela, aguarde!";
-          this.deleteTableConfig();
-          return this.saveTableConfig({ $event: this.allColumns, rowsPerPage: 10 })
-        }
-
-        const newCols = [];
-        
-        for (let i = 0; i < this.allColumns.length; i++) {
-          if (auxColumn.data.usuarioTable.usuarioTable[i]?.showCol) {
-            newCols.push(auxColumn.data.usuarioTable.usuarioTable[i])
-          }
-        }
-
-        if (auxColumn.data.usuarioTable.rowsPerPage) {
-          this.rows = auxColumn.data.usuarioTable.rowsPerPage;
-        }
-
-        this.tableColumns = newCols;
-        this.tableLoading = false;
-        setTimeout(() => { this.getUsuarios(); }, 500);
-
-      },
-      err => {
-        if (err.status == 404) {
-          this.saveTableConfig({ $event: this.allColumns, rowsPerPage: 10 })
-        } else {
-          this.showModalResponse = true;
-          this.contentResponse = tryCatchError(err);
-        }
-        this.tableLoading = false;
-
-      })
-  }
 
   saveTableConfig(obj: any): void {
-    this.tableLoading = true;
+    // this.progressBarService.changeProgressBar(true);
     const ObjToSend = {
-      usuarioTable: obj.$event,
+      logPrecoVenda: obj.$event,
       rowsPerPage: obj.rowsPerPage
     }
 
-    this.storageDBService.saveStorage(this.tableName, { "usuarioTable": ObjToSend }).subscribe(
-      () => { setTimeout(() => { this.getTableConfig(); }, 500); },
-      err => {
-        this.showModalResponse = true;
-        this.tableLoading = false;
-        this.contentResponse = tryCatchError(err);
-      })
-  }
+    this.filters = obj.filters;
 
-  eventAssociarPerfil(id: number): void {
-    this.route.navigate(['home/gerencia-usuario/perfil/cadastrar'], { queryParams: { id, 'associar': true } })
-  }
-
-  confirmDeleteUsuario(): void {
-    this.usuarioService.deleteById(this.id).subscribe(
+    this.storageDBService.saveStorage(this.tableName, { logPrecoVenda: ObjToSend }).subscribe(
       () => {
-        this.getUsuarios();
-        this.showModalDelete = false;
+        setTimeout(() => {
+          this.getTableConfig();
+        }, 500);
+        // this.progressBarService.changeProgressBar(false);
       },
       err => {
         this.showModalResponse = true;
-        this.contentResponse = tryCatchError(err);
-      })
-  }
-
-  private deleteTableConfig(): void {
-    this.tableLoading = true;
-    this.storageDBService.deleteStorage(this.tableName).subscribe(
-      () => { this.tableLoading = false; },
-      err => {
-        this.showModalResponse = true;
-        this.tableLoading = false;
+        // this.progressBarService.changeProgressBar(false);
         this.contentResponse = tryCatchError(err);
         this.getTableConfig();
       })
   }
 
-  private eventsAdapter(events: Usuario[]): Usuario[] {
-    let newEvent: Usuario[] = [];
-    events.forEach(event => {
-      let { cpfCnpj } = event;
-      newEvent.push({
-        ...event,
-        cpfCnpj: formatCPF(cpfCnpj)
+  private getTableConfig(): void {
+    // this.progressBarService.changeProgressBar(true);
+    this.tableLoading = true;
+    this.storageDBService.getStorage(this.tableName).subscribe(
+      column => {
+        const auxColumn: any = column;
+        const newCols = [];
+        for (let i = 0; i < this.allColumns.length; i++) {
+          if (auxColumn.data.logPrecoVenda.logPrecoVenda[i]?.showCol) {
+            newCols.push(auxColumn.data.logPrecoVenda.logPrecoVenda[i])
+          }
+        }
+
+        if (auxColumn.data.logPrecoVenda.rowsPerPage) {
+          this.rows = auxColumn.data.logPrecoVenda.rowsPerPage;
+          this.size = auxColumn.data.logPrecoVenda.rowsPerPage;
+        }
+
+        this.tableColumns = newCols;
+
+        if (this.dataToFillTable) {
+          setTimeout(() => { this.generateLog(this.storageData); }, 500);
+        }
+
+        this.progressBarService.changeProgressBar(false);
+        this.tableLoading = false;
+      },
+      err => {
+        if (err.status == 404) {
+          this.saveTableConfig({ $event: this.allColumns, rowsPerPage: 10 });
+        } else {
+          this.showModalResponse = true;
+          this.contentResponse = tryCatchError(err);
+          this.progressBarService.changeProgressBar(false);
+          this.tableLoading = false;
+        }
       })
-    });
-    return newEvent;
+  }
+
+  onHide() {
+    this.showModalResponse = false;
+  }
+
+  generateLog = (data) => {
+    const dataFim = typeof data.dataFim === 'object' ? this.datePipe.transform(data.dataFim, 'dd/MM/yyyy') : data.dataFim;
+    const dataInicio = typeof data.dataInicio === 'object' ? this.datePipe.transform(data.dataInicio, 'dd/MM/yyyy') : data.dataInicio;
+    const objToSend = { dataFim, dataInicio };
+    this.storageData = objToSend;
+    this.getTableData({page: this.page, size: this.rows, sort: this.sort, filters: this.filters})
+  }
+
+  getTableData(event){
+    //ExpressionChangedAfterItHasBeenCheckedError: Expression has changed after it was checked. Previous value: 'false'. Current value: 'true
+    // é devido a essa linha abaixo this.tableLoading = true;
+    this.tableLoading = true;
+    this.progressBarService.changeProgressBar(true);
+    this.usuarioService.listAll().subscribe(
+      res => {
+        if (res === null || res.length < 1) {
+          this.contentResponse = "Nenhum dado encontrado nesse período";
+
+          this.showTable = true;
+          this.progressBarService.changeProgressBar(false);
+          this.tableLoading = false;
+          return;
+        }
+        this.dataToFillTable = res;
+        this.showTable = true;
+        this.totalRecords = res; //totalPages
+        // this.first = res.number === 1 ? 1 : event.page;
+        this.progressBarService.changeProgressBar(false);
+        this.tableLoading = false;
+      },
+      err => {
+        this.contentResponse = tryCatchError(err);
+        this.isErrorResponse = true;
+        this.showModalResponse = true;
+        this.progressBarService.changeProgressBar(false);
+        this.showTable = false;
+        this.tableLoading = false;
+      }
+    )
   }
 
 }

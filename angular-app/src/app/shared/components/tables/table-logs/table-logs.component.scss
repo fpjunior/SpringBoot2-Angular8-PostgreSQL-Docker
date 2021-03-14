@@ -1,0 +1,64 @@
+@import "src/assets/styles/colors.scss";
+:host ::ng-deep {
+  .text {
+    float: left;
+    padding: 10px 16px;
+  }
+
+  .dateinput {
+    float: left;
+    
+
+    input {
+      width: 164px !important;
+      min-width: 0;
+      // border: 1px solid #ff0000;
+      height: 32px !important;
+      border-right: none;
+      border-top-right-radius: 0px;
+      border-bottom-right-radius: 0px;
+      box-shadow: 0 15px 10px 1px rgb(0 0 0 / 6%), 0 12px 58px 0 rgb(0 0 0 / 32%), 0 11px 14px 0 rgb(0 0 0 / 30%);
+    }
+  }
+
+  .newRegisterButton > button {
+    height: 32px !important;
+    margin-left: 16px !important;
+      background-color: #4c4c4c;
+      border-color: #4c4c4c;
+      box-shadow: 0 15px 10px 1px rgb(0 0 0 / 6%), 0 12px 58px 0 rgb(0 0 0 / 32%), 0 11px 14px 0 rgb(0 0 0 / 30%);  }
+
+  .p-calendar .p-button.p-button-icon-only,
+  .p-calendar .p-button:enabled:hover {
+    border: none;
+    background-color: $cor-azul-padrao;
+    background-color: #4c4c4c;
+    border-color: #4c4c4c;
+  }
+
+  .codigoUniverso-preco-venda,
+  .codigoEvento-preco-venda,
+  .codigoUnidadeDoUniverso-preco-venda,
+  .percentualEventoAnterior-preco-venda,
+  .percentualEventoAtual-preco-venda,
+  .codigoProduto-custo-partida,
+  .codigoUnidade-custo-partida,
+  .valorCustoAnterior-custo-partida,
+  .valorCustoAtual-custo-partida,
+  .percentualEventoAtual-preco-lista,
+  .codigoEvento-preco-lista,
+  .codigoUnidade-preco-lista,
+  .codigoProduto-preco-lista {
+    text-align: right !important;
+  }
+
+  .statusAtivoAtual-preco-venda,
+  .statusAtivoAnterior-preco-venda,
+  #statusAtivoAnterior-preco-venda,
+  #statusAtivoAtual-preco-venda,
+  .statusAtivoAtual-preco-lista,
+  .percentualEventoAnterior-preco-lista,
+  .statusAtivoAnterior-preco-lista {
+    text-align: center !important;
+  }
+}

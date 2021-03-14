@@ -1,0 +1,83 @@
+<div class="p-col-12">
+  <div class="dateinput" [formGroup]="logForm">
+    <p-calendar #calendarInput (onSelect)="daysCheck()" (keyup)="onKeyDate($event)" [showIcon]="true"
+      icon="far fa-calendar-alt" formControlName="dataInicio" dateFormat="dd/mm/yy" [maxDate]="maxDate"></p-calendar>
+  </div>
+  <div class="text">
+    <span> até </span>
+  </div>
+  <div class="dateinput" [formGroup]="logForm">
+    <p-calendar #calendarInput (onSelect)="daysCheck()" (keyup)="onKeyDate($event)" [showIcon]="true"
+      icon="far fa-calendar-alt" formControlName="dataFim" dateFormat="dd/mm/yy"
+      [minDate]="logForm.get('dataInicio').value" [maxDate]="maxDate"></p-calendar>
+  </div>
+  <p-button type="button" class="standard newRegisterButton" icon="fas fa-check" label="OK" (onClick)="generateLog()"
+    [disabled]="logForm.controls['dataInicio'].value === null || logForm.controls['dataFim'].value === null || logForm.controls['dataInicio'].value === '' || logForm.controls['dataFim'].value === ''">
+  </p-button>
+</div>
+
+<div #wrapperTable style="overflow-x: hidden; overflow-y: hidden;" class="m-t-1em" *ngIf="showTable === true">
+  <p-table #tableLogs [paginatorDropdownAppendTo]="wrapperTable" [lazy]="true" (onLazyLoad)="loadLazyTable($event)"
+    currentPageReportTemplate="Mostrado {first} a {last} de {totalRecords} registros" [totalRecords]="totalRecords"
+    [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50]" [columns]="cols" [value]="dataToFillTable"
+    [reorderableColumns]="true" [rows]="numberDataPerPage" [paginator]="true" [resizableColumns]="true"
+    [dataKey]="dataKey" (onColReorder)="colReorderEvent($event)" (onPage)="changeRows($event)" (onSort)="sort($event)"
+    [autoLayout]="true" [loading]="loading" [(first)]="first">
+
+    <ng-template pTemplate="header" let-columns>
+      <tr>
+        <th id="operationColumn-logs">
+          <button pButton type="button" class="tableButton" icon="fas fa-cog " pTooltip="Configurações"
+            (click)="showModalSelectCols()">
+          </button>
+        </th>
+
+        <th columnResizeMode="expand" *ngFor="let col of columns; let i = index"
+          [pSortableColumn]="col.field" pResizableColumn pReorderableColumn [id]="col.field + '-' + page">
+
+          {{col.header}}
+       
+        </th>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-dataToFillTable let-columns="columns">
+      <tr>
+        <td> </td>
+        <td *ngFor="let col of columns; let i = index" [ngSwitch]="col.field" [class]="col.field + '-' + page"
+          [pContextMenuRow]="columns">
+       
+              <!-- TABELA USUARIOS -->
+          <span *ngSwitchCase="'codigoComNome'">{{dataToFillTable.codigoComNome}}</span>
+          <span *ngSwitchCase="'email'">{{dataToFillTable.email}}</span>
+          <span *ngSwitchCase="'dataSenha'">{{dataToFillTable.dataSenha}}</span>
+
+          <div *ngSwitchCase="'operation'">
+            <button
+              pTooltip="teste"
+              icon="'fas fa-pencil-alt'"
+              ></button>
+  
+            <button pButton type="button"
+              pTooltip="Excluir" class="tableButton"
+              icon="fas fa-trash-alt"></button>
+          </div>
+      
+        </td>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="emptymessage">
+      Nenhum dado encontrado nesse período
+    </ng-template>
+  </p-table>
+</div>
+
+<generic-response-dialog (onClose)="onHide()" (onShow)="onShow()" [showModal]="showModalResponse"
+  [isError]="isErrorResponse" [content]="contentResponse">
+</generic-response-dialog>
+
+<app-confirm-dialog labelConfirm="Ok" (onClose)="onHideWrongDate()" (confirmEvent)="wrongDate = false"
+  [showModal]="wrongDate" header="Atenção" [standard]="false" (cancelEvent)="wrongDate = false"
+  content="Intervalo máximo permitido: 31 dias">
+</app-confirm-dialog>

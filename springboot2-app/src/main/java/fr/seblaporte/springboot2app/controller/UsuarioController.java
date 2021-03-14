@@ -22,8 +22,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import fr.seblaporte.springboot2app.dto.UsuarioDTO;
-import fr.seblaporte.springboot2app.model.Usuario;
-import fr.seblaporte.springboot2app.repository.UsuarioRepository;
 import fr.seblaporte.springboot2app.response.Response;
 import fr.seblaporte.springboot2app.service.UsuarioService;
 import io.swagger.annotations.Api;
@@ -31,7 +29,6 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import lombok.var;
-
 @Api(tags = "API Usuario")
 @RestController
 @RequestMapping("/api/v1/usuario")
@@ -42,22 +39,22 @@ public class UsuarioController extends AbstractController {
 	private UsuarioService usuarioService;
 
 	@ApiOperation(value = "Consultar todos usuarios.")
-	@ApiResponses(value = {
-		    @ApiResponse(code = 200, message = "Retorna o Response com lista de eventos"),
-		    @ApiResponse(code = 403, message = "Você não tem permissão para acessar este recurso"),
-		    @ApiResponse(code = 404, message = "retorna resultado da validações de dados."),
-		    @ApiResponse(code = 500, message = "Foi gerada uma exceção"),
-		})
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Retorna o Response com lista de eventos"),
+			@ApiResponse(code = 403, message = "Você não tem permissão para acessar este recurso"),
+			@ApiResponse(code = 404, message = "retorna resultado da validações de dados."),
+			@ApiResponse(code = 500, message = "Foi gerada uma exceção"), })
+	@CrossOrigin
 	@GetMapping
 	public ResponseEntity<Response<List<UsuarioDTO>>> buscarTodos(
-			@RequestParam(value="filtro", required = false, defaultValue = "") String filtro) {
+			@RequestParam(value = "filtro", required = false, defaultValue = "") String filtro) {
 		var response = new Response<List<UsuarioDTO>>();
-	
-			response.setData(usuarioService.buscarTodos(filtro));
-		
+
+		response.setData(usuarioService.buscarTodos(filtro));
+
 		return ResponseEntity.ok(response);
 	}
 
+	@CrossOrigin
 	@GetMapping("{codigo}")
 	public ResponseEntity<Response<UsuarioDTO>> buscarPorCodigo(@PathVariable("codigo") Integer codigo) {
 		var response = new Response<UsuarioDTO>();
@@ -66,12 +63,11 @@ public class UsuarioController extends AbstractController {
 	}
 
 	@ApiOperation(value = "Cadastrar o usuario.")
-	@ApiResponses(value = {
-		    @ApiResponse(code = 200, message = "Retorna o Response com código cadastrado."),
-		    @ApiResponse(code = 403, message = "Você não tem permissão para acessar este recurso"),
-		    @ApiResponse(code = 404, message = "retorna resultado da validações de dados."),
-		    @ApiResponse(code = 500, message = "Foi gerada uma exceção"),
-		})
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Retorna o Response com código cadastrado."),
+			@ApiResponse(code = 403, message = "Você não tem permissão para acessar este recurso"),
+			@ApiResponse(code = 404, message = "retorna resultado da validações de dados."),
+			@ApiResponse(code = 500, message = "Foi gerada uma exceção"), })
+	@CrossOrigin
 	@PostMapping
 	public ResponseEntity<Response<Integer>> cadastrar(@Valid @RequestBody UsuarioDTO usuarioDTO, BindingResult result,
 			UriComponentsBuilder ucBuilder) {
@@ -84,6 +80,7 @@ public class UsuarioController extends AbstractController {
 		return new ResponseEntity<>(response, headers, HttpStatus.CREATED);
 	}
 
+	@CrossOrigin
 	@PostMapping("{codigo}")
 	public ResponseEntity<?> atualizar(@Valid @RequestBody UsuarioDTO usuarioDTO, BindingResult result,
 			UriComponentsBuilder ucBuilder) {
@@ -91,6 +88,7 @@ public class UsuarioController extends AbstractController {
 		return ResponseEntity.ok().build();
 	}
 
+	@CrossOrigin
 	@DeleteMapping("{codigo}")
 	public ResponseEntity<?> deletar(@PathVariable("codigo") Integer codigo) {
 		this.usuarioService.deletar(codigo);

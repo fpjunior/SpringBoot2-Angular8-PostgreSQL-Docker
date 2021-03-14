@@ -32,6 +32,7 @@ import { EventoDashboardComponent } from './components/layout/gerencia-eventos/e
 import { CicloDashboardComponent } from './components/layout/motor-servico/ciclo-dashboard/ciclo-dashboard.component';
 import { ConfigIndicadorComponent } from './components/layout/motor-servico/config-indicador/config-indicador.component';
 import { UsuarioDashboardComponent } from './components/layout/gerencia-usuario/usuario/usuario-dashboard/usuario-dashboard.component';
+import { TableLogsComponent } from './components/tables/table-logs/table-logs.component';
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import { UsuarioDashboardComponent } from './components/layout/gerencia-usuario/
     InputPropertyDashboardComponent,
     InputPropertyFormComponent,
     UsuarioDashboardComponent,
-
+    TableLogsComponent,
+    
     // CORE
     StepsComponent,
 

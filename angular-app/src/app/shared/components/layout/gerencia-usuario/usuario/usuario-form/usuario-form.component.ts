@@ -75,12 +75,8 @@ export class UsuarioFormComponent implements OnInit {
 
   private initForm = (usuario: Usuario): FormGroup => this.usuarioForm = this.formBuilder.group({
     codigo: [{ value: usuario.codigo, disabled: true }],
-    nome: [{ value: usuario.nome, disabled: true }],
     cpfCnpj: [{ value: usuario.cpfCnpj, disabled: true }],
     email: [{ value: usuario.email, disabled: true }],
-    ativo: [{ value: usuario.ativo, disabled: true }],
-    gerirUsuario: [{ value: usuario.gerirUsuario, disabled: true }],
-    assinatura: [{ value: usuario.assinatura, disabled: true }]
   })
 
   private blankForm = (): Usuario => {

@@ -71,6 +71,12 @@
         <!-- TELA REFERENCIA - UFS ATUACAO -->
         <span *ngSwitchCase="'codigoUnidade'">{{dataToFillTable.codigoUnidade}}</span>
 
+         <!-- TELA REFERENCIA - USUÁRIOS -->
+         <span *ngSwitchCase="'codigoComNome'">{{dataToFillTable.codigoComNome}}</span>
+         <span *ngSwitchCase="'email'">{{dataToFillTable.email}}</span>
+         <span *ngSwitchCase="'dataSenhha'">{{dataToFillTable.dataSenha}}</span>
+
+
         <div *ngSwitchCase="'operation'">
           <button
             pTooltip="teste"

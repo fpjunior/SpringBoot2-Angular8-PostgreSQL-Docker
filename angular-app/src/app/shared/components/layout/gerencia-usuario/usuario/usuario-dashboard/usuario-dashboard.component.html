@@ -1,10 +1,7 @@
-<div class="p-grid p-jc-center">
-  <app-table-gerencia page="gerencia-usuario" [immutableCols]="['codigo','nome','operation']" [loading]="tableLoading"
-    [showModalDelete]="showModalDelete" (closeDelete)="showModalDelete = false" [fullCols]="allColumns" [rowsToShow]="rows"  [cols]="tableColumns" [dataToFillTable]="usuarioResults"
-    (delete)="eventAssociarPerfil($event)" (updateColumn)="saveTableConfig($event)"
-    (confirmDelete)="confirmDeleteUsuario()">
-  </app-table-gerencia>
-</div>
+<app-table-logs page="reajuste-preco" [cols]="tableColumns" [fullCols]="allColumns" [rowsToShow]="rows"
+[immutableCols]="['codigo']" (updateColumn)="saveTableConfig($event)" [totalRecords]="totalRecords" [first]="first"
+(lazyTableData)="getTableData($event)" (getData)="generateLog($event)" [showTable]="showTable" 
+[loading]="tableLoading" [dataToFillTable]="dataToFillTable"></app-table-logs>
 
-<generic-response-dialog [showModal]="showModalResponse" [isError]="isErrorResponse" [content]="contentResponse">
+<generic-response-dialog [content]="contentResponse" (onClose)="onHide()" [showModal]="showModalResponse">
 </generic-response-dialog>
