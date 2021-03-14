@@ -92,6 +92,7 @@ export class UsuarioDashboardComponent implements OnInit {
   private getTableConfig(): void {
     // this.progressBarService.changeProgressBar(true);
     this.tableLoading = true;
+    debugger
     this.storageDBService.getStorage(this.tableName).subscribe(
       column => {
         const auxColumn: any = column;
@@ -171,6 +172,17 @@ export class UsuarioDashboardComponent implements OnInit {
         this.tableLoading = false;
       }
     )
+  }
+
+  private deleteTableConfig(): void {
+    this.progressBarService.changeProgressBar(true);
+    this.storageDBService.deleteStorage(this.tableName).subscribe(
+      () => { this.progressBarService.changeProgressBar(false); },
+      err => {
+        this.progressBarService.changeProgressBar(false);
+        this.contentResponse = tryCatchError(err);
+        this.getTableConfig();
+      })
   }
 
 }

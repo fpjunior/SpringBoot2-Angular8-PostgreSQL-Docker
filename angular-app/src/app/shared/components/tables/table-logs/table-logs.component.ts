@@ -135,7 +135,7 @@ export class TableLogsComponent implements OnInit, OnChanges {
 
   onShow = () => setTimeout(() => { if (!this.isErrorResponse) { this.showModalResponse = false; } }, 1500);
 
-  confirmExit = (): Promise<boolean> => this.route.navigate(['/home/eventos/dashboard']);
+  confirmExit = (): Promise<boolean> => this.route.navigate(['/home']);
 
   exportPdf = (): void => exportPDF(this.cols, this.dataToFillTable, this.page);
 
