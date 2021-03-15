@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,6 +27,7 @@ public class StorageDBController {
 	@Autowired
 	private StorageDBService storageDBService;
 
+	@CrossOrigin
 	@GetMapping(path="user/{codeUser}/key/{key}", produces=MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Response<Object>> getStorageKeyUser(
 			@PathVariable("codeUser") Integer codigo,
@@ -41,6 +43,7 @@ public class StorageDBController {
 			
 	}
 	
+	@CrossOrigin
 	@PostMapping(path="user/{codeUser}/key/{key}", produces=MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Response<String>> setStorageKeyUser(
 			@PathVariable("codeUser") Integer codigo,
@@ -57,6 +60,7 @@ public class StorageDBController {
 		}		
 	}	
 
+	@CrossOrigin
 	@DeleteMapping(path="user/{codeUser}/key/{key}")
 	public ResponseEntity<Response<String>> deleteStorageKeyUser(
 			@PathVariable("codeUser") Integer codigo,

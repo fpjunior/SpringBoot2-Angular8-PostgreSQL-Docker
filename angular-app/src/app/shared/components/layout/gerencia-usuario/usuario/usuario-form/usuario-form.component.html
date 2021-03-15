@@ -1,54 +1,32 @@
-<!-- <div class="p-grid p-jc-start">
+<div class="p-grid p-jc-start">
   <div class="p-col-2">
     <input-number [formGroup]="usuarioForm" label="Código" controlName="codigo"></input-number>
   </div>
 
   <div class="p-col-4">
-    <input-text [formGroup]="usuarioForm" label="Nome" controlName="nome"></input-text>
+    <input-text [required]="true" [formGroup]="usuarioForm" label="nome" controlName="nome"></input-text>
+  </div>
+  <div class="p-col-2">
+    <input-text [required]="true" [formGroup]="usuarioForm" label="email" controlName="email"></input-text>
   </div>
 
   <div class="p-col-2">
-    <app-input-mask [formGroup]="usuarioForm" mask="999.999.999-99" label="CPF" controlName="cpfCnpj"></app-input-mask>
+    <input-text [required]="true"  [formGroup]="usuarioForm" label="senha" controlName="senha"></input-text>
   </div>
 
-  <div class="p-col-4">
-    <input-text [formGroup]="usuarioForm" label="E-mail" controlName="email"></input-text>
-  </div>
 </div>
 
-<form [formGroup]="usuarioForm" >
-  <div class="p-grid ui-fluid m-t-1em">
-    <div class="p-col-flex m-l-1em">
-      <p-checkbox name="ativo" binary="true" label="Ativo" formControlName="ativo"></p-checkbox>
-    </div>
-    <div class="p-col-flex m-l-1em">
-      <p-checkbox name="gerirUsuario" binary="true" label="Gerir Usuário" formControlName="gerirUsuario">
-      </p-checkbox>
-    </div>
-  </div>
-
-  <div class="p-grid ui-fluid m-t-1em">
-    <div class="p-col-4 " >
-      <label for=""> Assinatura</label>
-      <div style="border: 0.5px solid #CCC; border-radius: 4px; background-color: #EAEAEA; width: 100%; min-height: 122px;">
-        <img referrerpolicy="no-referrer" loading="lazy" alt="Assinatura não encontrada" [src]="url" width="100%" height="122px">
-      </div>
-    </div>
-  </div>
-
-  <div class="m-t-15em">
-    <generic-buttons model="cancel"  (cancelEvent)="cancelForm()" [canceled]="false">
+<form [formGroup]="usuarioForm" (ngSubmit)="submitForm()">
+  <div class="m-t-25em">
+    <generic-buttons model="standard" [formGroup]="usuarioForm" (cancelEvent)="cancelForm()" [canceled]="true">
     </generic-buttons>
   </div>
 </form>
 
 <app-confirm-dialog (onClose)="onHideDialogConfirm()" (confirmEvent)="confirmExit()" (cancelEvent)="showModalConfirm = false"
   [showModal]="showModalConfirm" header="Confirmação"
-  content="Tem certeza que deseja sair?">
+  content="Tem certeza que deseja sair? Alterações não salvas serão descartadas.">
 </app-confirm-dialog>
 
-<generic-response-dialog (onClose)="onHide()" [showModal]="showModalResponse" [isError]="isErrorResponse"
-  [content]="contentResponse">
-</generic-response-dialog> -->
-
-<p>teste usuario form</p>
+<generic-response-dialog (onClose)="onHide()" (onShow)="onShow()" [showModal]="showModalResponse" [isError]="isErrorResponse" [content]="contentResponse">
+</generic-response-dialog>

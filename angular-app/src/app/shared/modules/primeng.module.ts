@@ -19,20 +19,23 @@ import { TableModule } from 'primeng/table';
 import { StepsModule } from 'primeng/steps';
 import { InputMaskModule } from 'primeng/inputmask';
 import { CalendarModule } from 'primeng/calendar';
+import { TooltipModule } from 'primeng/tooltip';
+import { RippleModule } from 'primeng/ripple';
+import { PaginatorModule } from 'primeng/paginator';
 
 
 @NgModule({
   exports: [
+    PaginatorModule,
     CardModule,
     MenubarModule,
-    ProgressSpinnerModule,
     SidebarModule,
-    ButtonModule,
-    TableModule,
-    CardModule,
     SplitButtonModule,
     PanelMenuModule,
+    ProgressSpinnerModule,
     ProgressBarModule,
+    ButtonModule,
+    TableModule,
     DropdownModule,
     InputNumberModule,
     PickListModule,
@@ -41,9 +44,16 @@ import { CalendarModule } from 'primeng/calendar';
     ChartModule,
     CheckboxModule,
     InputTextModule,
+    TooltipModule,
     StepsModule,
     InputMaskModule,
-    CalendarModule
+    CalendarModule,
+
+    // MessagesModule,
+    // MessageModule
+    // DialogModule
+    // ToastModule,
+    RippleModule,
   ]
 })
 export class PrimengModule { }

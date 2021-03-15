@@ -4,7 +4,6 @@ import { MenuItem } from 'primeng/api';
 import { BreadcrumbService } from 'src/app/shared/components/breadcrumbs/breadcrumbs.service';
 import { StorageDBService } from 'src/app/shared/services/storageDB.service';
 import { tryCatchError } from 'src/app/shared/utils/erro-handler.util';
-import { formaterSorN } from 'src/app/shared/utils/tables.util';
 import { UsuarioService } from '../service/usuario.service';
 import { Usuario } from '../usuario-form/model/usuario-form.model';
 
@@ -45,17 +44,16 @@ export class UsuarioDashboardComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getUsuarios();
     this.getTableConfig();
     this.breadcrumbService.setBreadcrumb(this.breadcrumbItems);
   }
 
   onHide() { this.showModalResponse = false }
 
-  newRegister = (): Promise<boolean> => this.route.navigate(['/home']);
+  newRegister = (): Promise<boolean> => this.route.navigate(['/gerencia-usuario/usuario/cadastrar']);
 
   deleteUsuario(id: number): void {
-    this.id = id;
+    // this.id = id;
     // this.precoBaseService.verificarExisteUniversoParaUsuario(id).subscribe(
     //   accert => {
     //     const aux: any = accert;
@@ -144,7 +142,7 @@ export class UsuarioDashboardComponent implements OnInit {
         if (err.status == 404) {
           this.saveTableConfig({ $event: this.allColumns, rowsPerPage: 10 });
         } else {
-          // this.showModalResponse = true;
+          this.showModalResponse = true;
           this.contentResponse = tryCatchError(err);
           // this.progressBarService.changeProgressBar(false);
           this.tableLoading = false;

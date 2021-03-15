@@ -1,0 +1,23 @@
+<div [formGroup]="formGroup" class="form-label">
+    <label [ngClass]="{'required': required}" [for]="label">{{label}}
+    </label>
+  
+    <p-inputMask 
+    [required]="required"
+    [formControlName]="controlName" 
+    [mask]="mask" 
+    placeholder="" 
+    slotChar=" "
+    [unmask]="unmask"
+    (onBlur)="blur.emit($event)"
+    (onChange)="change.emit($event)"
+    (onInput)="input.emit($event)"
+    [ngClass]="validator.validateHasError(formControl, 'required') ? 'ng-invalid ng-dirty' : ''"
+    ></p-inputMask>
+
+    <small *ngIf="validator.validateHasError(formControl, 'required')" class="p-invalid">
+      Campo obrigatório.
+    </small>
+  </div>
+
+  

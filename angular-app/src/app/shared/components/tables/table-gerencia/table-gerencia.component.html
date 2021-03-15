@@ -1,15 +1,10 @@
 <div id="table-gerencia">
-  <div class="p-d-flex p-ai-center" [ngClass]="{
-    'gerencia-perfil':' p-jc-end',
-    'gerencia-usuario':'p-jc-end',
-    'gerencia-eventos':'p-jc-start',
-    'ufs-atuacao':'p-jc-center'
-  }[page]">
+  <div class="p-d-flex p-ai-center">
 
     <div class="input-search" class="p-col-4">
       <input pInputText class="uppercase" type="text"
         (input)="tableGerencia.filterGlobal($event.target.value, 'contains')"
-        placeholder="Digite código ou descrição" />
+        placeholder="Digite código, nome ou email do usuário" />
     </div>
 
     <p-button type="button"
@@ -49,7 +44,7 @@
             </button>
           </th>
 
-          <th columnResizeMode="expand" *ngFor="let col of columns; let i = index" pTooltip="col.hintName" [pSortableColumn]="col.field"
+          <th columnResizeMode="expand" *ngFor="let col of columns; let i = index" [pTooltip]="col.hintName" [pSortableColumn]="col.field"
             pResizableColumn pReorderableColumn [id]="col.field + '-' + page">
             {{col.header}}
             <p-sortIcon *ngIf="col.field !== 'operation'" [field]="col.field"></p-sortIcon>
@@ -76,7 +71,7 @@
             <!-- TELA REFERENCIA - GERENCIA DE USUARIO -->
             <span *ngSwitchCase="'codigoComNome'">{{dataToFillTable.codigoComNome}}</span>
             <span *ngSwitchCase="'email'">{{dataToFillTable.email}}</span>
-            <span *ngSwitchCase="'dataSenha'">{{dataToFillTable.email}}</span>
+            <span *ngSwitchCase="'dataSenha'">{{dataToFillTable.dataSenha}}</span>
 
             <div *ngSwitchCase="'operation'">
               <button
@@ -86,7 +81,7 @@
                 [routerLink]="editRegister(page)"
                 [queryParams]="{ id: dataToFillTable.codigo}"></button>
 
-              <button pButton type="button" *ngIf="page !== 'ufs-atuacao'" (click)="delete.emit(dataToFillTable.codigo)"
+              <button pButton type="button"  (click)="delete.emit(dataToFillTable.codigo)"
                 pTooltip="Excluir" class="tableButton"
                 icon="fas fa-trash-alt"></button>
             </div>

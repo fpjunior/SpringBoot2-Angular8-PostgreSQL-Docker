@@ -5,4 +5,16 @@
     @include fontStandard;
     font-weight: unset;
   }
+
+  form.ng-untouched.ng-pristine.ng-invalid {
+    margin-top: 368px;
+  }
+
+  .p-grid.p-jc-start {
+    font-size: 13px;
+    display: flex;
+    max-width: min-content;
+  }
+
+
 }

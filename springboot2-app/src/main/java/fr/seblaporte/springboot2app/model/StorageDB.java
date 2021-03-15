@@ -20,7 +20,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(schema = "MDWBPRC", name = "T900_")
+@Table(name = "T900_")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -41,13 +41,13 @@ public class StorageDB {
 	@JoinColumn(name = "T900_C002_", insertable = false, updatable = false)	
 	private Usuario usuario;
 	
-	@Column(name = "T900_C004_", columnDefinition = "TIMESTAMP")
+	@Column(name = "T900_C004_")
 	private LocalDateTime dataUltAtualizacao;
 
 	@Column(name = "T900_C005_")
 	private Integer tipoDados;
 
-	@Column(name = "T900_C006_", columnDefinition = "CLOB")
+	@Column(name = "T900_C006_")
 	private Clob dados;
 }
 

@@ -50,10 +50,24 @@
   }
 
   .p-col-modified {
-    // width: 33.33333333333333%;
-    // padding: 0.5rem;
+    width: 33.33333333333333%;
+    padding: 0.5rem;
     flex: 0 0 auto;
   }
+
+  section.p-grid.p-jc-center {
+    display: flex;
+    justify-content: center;
+    
+  }
+
+  button.p-button.p-component.p-ripple {
+    color: #fff;
+    background: #595959;
+    border: 1px solid #595959;
+    margin-left: 12px;
+    box-shadow: 0 7px 5px 0px rgb(0 0 0 / 26%), 0 -1px 52px 0 rgb(0 0 0 / 0%), 0 0px 0px 0 rgb(0 0 0);
+}
 
   // @media (max-width: 1300px) {
   //   .p-col-modified {

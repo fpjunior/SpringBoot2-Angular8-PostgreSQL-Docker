@@ -1,0 +1,36 @@
+<div [formGroup]="formGroup" class="form-label">
+  <label
+  [ngClass]="{'required': required}"
+  [for]="label">{{label}}
+  </label>
+
+<!-- https://primefaces.org/primeng/showcase/#/inputnumber -->
+  <p-inputNumber
+  [inputId]="label"
+  [name]="label"
+  [placeholder]="placeholder"
+  [formControlName]="controlName"
+  [required]="required"
+  [min]="min"
+  [max]="max"
+  [maxlength]="maxlength"
+  [minFractionDigits]="minFractionDigits"
+  [maxFractionDigits]="maxFractionDigits"
+  (onBlur)="blur.emit($event)"
+  (onKeyDown)="key.emit($event)"
+
+  [ngClass]="validator.validateHasError(formControl, 'required') ? 'ng-invalid ng-dirty' : ''">
+</p-inputNumber>
+
+<small *ngIf="validator.validateHasError(formControl, 'required')" class="p-invalid">
+  Campo obrigatório.
+</small>
+
+<small *ngIf="validator.validateHasError(formControl, 'min')" class="p-invalid">
+  Campo precisa ter no mínimo o valor {{validator.validateLength(formControl, 'min')}}
+</small>
+
+<small *ngIf="validator.validateHasError(formControl, 'max')" class="p-invalid">
+  Campo pode ter o valor máximo {{validator.validateLength(formControl, 'max')}}
+</small>
+</div>

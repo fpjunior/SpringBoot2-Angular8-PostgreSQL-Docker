@@ -34,6 +34,9 @@ import { ConfigIndicadorComponent } from './components/layout/motor-servico/conf
 import { UsuarioDashboardComponent } from './components/layout/gerencia-usuario/usuario/usuario-dashboard/usuario-dashboard.component';
 import { TableLogsComponent } from './components/tables/table-logs/table-logs.component';
 import { DialogTableColumnComponent } from './components/dialogs/dialog-table-column/dialog-table-column.component';
+import { InputNumberComponent } from './components/fields/input-number/input-number.component';
+import { InputMaskComponent } from './components/fields/input-mask/input-mask.component';
+import { UsuarioFormComponent } from './components/layout/gerencia-usuario/usuario/usuario-form/usuario-form.component';
 
 
 @NgModule({
@@ -50,6 +53,7 @@ import { DialogTableColumnComponent } from './components/dialogs/dialog-table-co
     InputPropertyDashboardComponent,
     InputPropertyFormComponent,
     UsuarioDashboardComponent,
+    UsuarioFormComponent,
     TableLogsComponent,
     
     // CORE
@@ -79,6 +83,10 @@ import { DialogTableColumnComponent } from './components/dialogs/dialog-table-co
     //FIELDS
     PicklistComponent,
     InputTextComponent,
+    InputNumberComponent,
+    InputNumberComponent,
+    InputMaskComponent,
+
 
     // BUTTONS
     GenericButtonsComponent,
@@ -123,7 +131,10 @@ import { DialogTableColumnComponent } from './components/dialogs/dialog-table-co
     GenericButtonsComponent,
 
     // FIELDS
-    InputTextComponent
+    InputTextComponent,
+    InputNumberComponent,
+
+
   ],
   entryComponents: [
 

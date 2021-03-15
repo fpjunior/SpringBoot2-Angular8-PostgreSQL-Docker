@@ -1,3 +1,4 @@
+import { ProgressBarService } from './../../progress-bar/progress-bar.service';
 import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { LazyLoadEvent } from 'primeng/api';
@@ -113,17 +114,15 @@ export class TableGerenciaComponent implements OnInit, AfterViewInit {
   }
 
   newRegister = (page: string): Promise<boolean> => {
-    switch (page) {
    
-      case 'gerencia-usuario':
-        return this.route.navigate(['/home/gerencia-usuario/usuario/cadastrar'])
-    }
+        
+        return this.route.navigate(['/gerencia-usuario/usuario/cadastrar'])
   };
 
   editRegister = (page: string): string => {
     switch (page) {
-      case 'gerencia-usuario':
-        return '/home/gerencia-usuario/usuario/cadastrar'
+      case 'gerencia-usuarios':
+        return '/gerencia-usuario/usuario/cadastrar'
     }
   };
 
