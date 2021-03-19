@@ -1,6 +1,7 @@
 <div class="g-dialog">
 
-  <p-dialog [draggable]="false" [modal]="true" [baseZIndex]="10000" [(visible)]="showModal" [header]="header">
+  <p-dialog (onHide)="onCloseParent()" (onShow)="onShowParent()" [draggable]="false" closeIcon="fa fa-times"
+    [modal]="true" [baseZIndex]="10000" [(visible)]="showModal" [header]="header">
 
     <span>{{content}}</span>
 

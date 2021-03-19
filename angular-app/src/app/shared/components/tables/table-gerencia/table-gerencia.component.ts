@@ -114,8 +114,6 @@ export class TableGerenciaComponent implements OnInit, AfterViewInit {
   }
 
   newRegister = (page: string): Promise<boolean> => {
-   
-        
         return this.route.navigate(['/gerencia-usuario/usuario/cadastrar'])
   };
 

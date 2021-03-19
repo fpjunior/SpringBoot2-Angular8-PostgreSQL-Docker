@@ -8,39 +8,49 @@
 
   input.uppercase.p-inputtext.p-component {
     width: 341px;
-    box-shadow: 0 7px 5px 0px rgb(0 0 0 / 26%), 0 -1px 52px 0 rgb(0 0 0 / 0%), 0 0px 0px 0 rgb(0 0 0);
+    box-shadow: 0 7px 5px 0px rgb(0 0 0 / 26%), 0 -1px 52px 0 rgb(0 0 0 / 0%),
+      0 0px 0px 0 rgb(0 0 0);
   }
 
   app-table-gerencia {
     width: 100%;
   }
 
+  button.tableButton.p-button.p-component.p-button-icon-only {
+    left: 21px !important;
+  }
+
+  th#operation-gerencia-usuarios {
+    width: 128.5px;
+  }
+
   .p-button:enabled:hover {
     background: #282828;
     color: #fff;
     border-color: #282828;
-}
+  }
 
   .p-button {
     color: #fff;
     background: #595959;
     border: 1px solid #595959;
     margin-left: 12px;
-    box-shadow: 0 7px 5px 0px rgb(0 0 0 / 26%), 0 -1px 52px 0 rgb(0 0 0 / 0%), 0 0px 0px 0 rgb(0 0 0);
-}
+    box-shadow: 0 7px 5px 0px rgb(0 0 0 / 26%), 0 -1px 52px 0 rgb(0 0 0 / 0%),
+      0 0px 0px 0 rgb(0 0 0);
+  }
 
-button.tableButton.p-button.p-component.p-button-icon-only.ng-star-inserted {
-  background: #c76868;
-  border-radius: 25px;
-  border: 1px solid #c76868;
-}
+  button.tableButton.p-button.p-component.p-button-icon-only.ng-star-inserted {
+    background: #c76868;
+    border-radius: 25px;
+    border: 1px solid #c76868;
+  }
 
-button.tableButton.p-button.p-component.p-button-icon-only {
-  border-radius: 35px;
-  margin-right: 2px;
-  box-shadow: 0 7px 4px -1px rgb(0 0 0 / 47%), 0 -1px 13px 0 rgb(0 0 0 / 14%), 0 20px 32px 0 rgb(0 0 0 / 19%);
-  margin: -4px;
-  left: 12px;
-}
-
+  button.tableButton.p-button.p-component.p-button-icon-only {
+    border-radius: 35px;
+    margin-right: 2px;
+    box-shadow: 0 7px 4px -1px rgb(0 0 0 / 47%), 0 -1px 13px 0 rgb(0 0 0 / 14%),
+      0 20px 32px 0 rgb(0 0 0 / 19%);
+    margin: -4px;
+    left: 12px;
+  }
 }

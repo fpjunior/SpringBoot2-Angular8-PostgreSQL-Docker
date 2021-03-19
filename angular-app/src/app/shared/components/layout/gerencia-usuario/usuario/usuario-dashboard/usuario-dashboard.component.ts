@@ -52,39 +52,20 @@ export class UsuarioDashboardComponent implements OnInit {
 
   newRegister = (): Promise<boolean> => this.route.navigate(['/gerencia-usuario/usuario/cadastrar']);
 
-  deleteUsuario(id: number): void {
-    // this.id = id;
-    // this.precoBaseService.verificarExisteUniversoParaUsuario(id).subscribe(
-    //   accert => {
-    //     const aux: any = accert;
-    //     if (aux.data == true) {
-    //       this.showModalDeleteDenied = true;
-    //     } else {
-    //       this.showModalDelete = true;
-    //     }
-    //   },
-    //   err => {
-    //     this.showModalResponse = true;
-    //     this.contentResponse = tryCatchError(err);
-    //     // this.progressBarService.changeProgressBar(false);
-    //   }, () => {
-    //     // this.progressBarService.changeProgressBar(false);
-    //   })
+  showModalConfirmDelete(id: number): void {
+    this.showModalDelete = true;
+    this.id = id;
   }
 
   confirmDeleteUsuario(): void {
-    // this.progressBarService.changeProgressBar(true);
     this.usuarioService.deleteById(this.id).subscribe(
       () => {
-        this.getUsuarios();
         this.showModalDelete = false;
+        this.getUsuarios();
       },
       err => {
         this.showModalResponse = true;
         this.contentResponse = tryCatchError(err);
-        // this.progressBarService.changeProgressBar(false);
-      }, () => {
-        // this.progressBarService.changeProgressBar(false);
       })
   }
 

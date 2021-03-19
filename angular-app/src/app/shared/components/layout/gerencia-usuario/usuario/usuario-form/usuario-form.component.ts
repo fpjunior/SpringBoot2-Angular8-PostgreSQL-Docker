@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MenuItem } from 'primeng/api';
 import { BreadcrumbService } from 'src/app/shared/components/breadcrumbs/breadcrumbs.service';
 import { ProgressBarService } from 'src/app/shared/components/progress-bar/progress-bar.service';
 import { DropdownStandard } from 'src/app/shared/models/dropdown.model';
 import { tryCatchError } from 'src/app/shared/utils/erro-handler.util';
+
 import { UsuarioService } from '../service/usuario.service';
 import { Usuario } from './model/usuario-form.model';
 
@@ -62,7 +63,7 @@ export class UsuarioFormComponent implements OnInit {
 
   onHideDialogConfirm = (): boolean => this.showModalConfirm = false;
 
-  confirmExit = (): Promise<boolean> => this.route.navigate(['/home/usuarios/dashboard']);
+  confirmExit = (): Promise<boolean> => this.route.navigate(['/gerencia-usuario/usuario/dashboard']);
 
   tipoChange(obj: DropdownStandard): boolean {
     const roleValue = obj.value;
@@ -116,7 +117,7 @@ export class UsuarioFormComponent implements OnInit {
   }
 
   private initForm = (usuario: Usuario): FormGroup => this.usuarioForm = this.formBuilder.group({
-    codigo: [{ value: usuario.codigo, disabled: true}],
+    codigo: [{ value: usuario.codigo, disabled: true }],
     codigoComNome: [usuario.codigoComNome],
     nome: [usuario.nome],
     email: [usuario.email],
@@ -139,6 +140,10 @@ export class UsuarioFormComponent implements OnInit {
   }
 
   private editUsuario(get: Usuario) {
+    setTimeout(() => {
+      this.progressBarService.changeProgressBar(false);
+    }, 500)
+
     if (this.tipoChange(this.f.tipo.value)) {
       this.enableBaseIncidencia = true;
     }
@@ -149,11 +154,10 @@ export class UsuarioFormComponent implements OnInit {
     this.usuarioService.saveOrUpdate(obj).subscribe(
       res => {
         this.isErrorResponse = false;
-        this.contentResponse = "Usuario salvo com sucesso!"
+        this.contentResponse = "Operação realizada sucesso!"
         this.exit = true;
         this.showModalResponse = true;
         this.progressBarService.changeProgressBar(false);
-
       },
       err => {
         this.exit = false;

@@ -101,12 +101,13 @@
 
   <app-confirm-dialog (onClose)="onHideDialogConfirmExclude()" (confirmEvent)="confirmDelete.emit()"
     (cancelEvent)="showModalDelete = false" [showModal]="showModalDelete" header="Confirmação"
-    content="Tem certeza que deseja excluir o evento selecionado?">
+    content="Tem certeza que deseja excluir o usuário selecionado?">
   </app-confirm-dialog>
+  
 
   <app-confirm-dialog (onClose)="onHideDialogConfirmExcludeDenied()" (confirmEvent)="showModalDeleteDenied = false"
     [standard]="false" [showModal]="showModalDeleteDenied" header="Aviso" labelConfirm="OK"
-    content="Existem registros associados a este evento. Exclusão não permitida!">
+    content="Existem registros associados a este usuário. Exclusão não permitida!">
   </app-confirm-dialog>
 
   <app-dialog-table-column (onClose)="onHideDialogTable()" (saveColumn)="updateColumn.emit({$event: $event, rowsPerPage: numberDataPerPage})"

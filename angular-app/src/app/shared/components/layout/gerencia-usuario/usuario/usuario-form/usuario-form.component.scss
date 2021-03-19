@@ -16,5 +16,12 @@
     max-width: min-content;
   }
 
+  .form-label.ng-untouched.ng-pristine.ng-valid {
+    padding-left: 25px;
+  }
 
+  section.p-grid.p-jc-center {
+    height: 46px;
+    padding-top: 453px;
+  }
 }
