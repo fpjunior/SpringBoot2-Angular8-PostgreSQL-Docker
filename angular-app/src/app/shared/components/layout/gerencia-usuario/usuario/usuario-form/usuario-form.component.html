@@ -1,17 +1,21 @@
 <div class="p-grid p-jc-start">
   <div class="p-col-2">
-    <input-number [formGroup]="usuarioForm" label="Código" controlName="codigo"></input-number>
+    <input-number [formGroup]="usuarioForm" label="Código:" controlName="codigo"></input-number>
   </div>
 
   <div class="p-col-4">
-    <input-text [required]="true" [formGroup]="usuarioForm" label="nome" controlName="nome"></input-text>
+    <input-text [required]="true" [formGroup]="usuarioForm" label="Nome:" controlName="nome"></input-text>
   </div>
   <div class="p-col-2">
-    <input-text [required]="true" [formGroup]="usuarioForm" label="email" controlName="email"></input-text>
+    <input-text [required]="true" [formGroup]="usuarioForm" label="Email" controlName="email"></input-text>
   </div>
 
   <div class="p-col-2">
-    <input-text [required]="true"  [formGroup]="usuarioForm" label="senha" controlName="senha"></input-text>
+    <input-text [required]="true"  [formGroup]="usuarioForm" label="Senha:" controlName="senha"></input-text>
+  </div>
+
+  <div class="p-col-2">
+    <input-text [required]="true"  [formGroup]="usuarioForm" label="Data:" controlName="dataCadastro"></input-text>
   </div>
 
 </div>

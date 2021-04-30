@@ -4,7 +4,7 @@
     (closeDelete)="showModalDelete = false; showModalDeleteDenied = false" [dataToFillTable]="usuarioResults"
     (delete)="showModalConfirmDelete($event)" (confirmDelete)="confirmDeleteUsuario()"
     [immutableCols]="['codigoComNome', 'operation']" [globalFilterFields]="['codigoComNome',
-    'email', 'dataSenha']" (updateColumn)="saveTableConfig($event)">
+    'email', 'dataCadastro']" (updateColumn)="saveTableConfig($event)">
   </app-table-gerencia>
 </div>
 

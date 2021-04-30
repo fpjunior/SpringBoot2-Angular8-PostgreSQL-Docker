@@ -24,13 +24,10 @@ export class UsuarioFormComponent implements OnInit {
 
   usuarioForm: FormGroup;
 
-  requiredBaseIncidencia = true;
-  requiredCheck = false;
   exit = false;
   showModalResponse = false;
   showModalConfirm = false;
   isErrorResponse = false;
-  enableBaseIncidencia = false;
 
   descricaoMaxLength = 30;
 
@@ -52,7 +49,6 @@ export class UsuarioFormComponent implements OnInit {
     this.initForm(this.blankForm());
     this.isEdit();
     this.breadcrumbService.setBreadcrumb(this.breadcrumbItems);
-    setTimeout(() => { this.enableBaseIncidencia && this.f.baseIncidencia.enable(); }, 500);
   }
 
   onHide = (): Promise<boolean> => this.exit && this.confirmExit();
@@ -64,24 +60,6 @@ export class UsuarioFormComponent implements OnInit {
   onHideDialogConfirm = (): boolean => this.showModalConfirm = false;
 
   confirmExit = (): Promise<boolean> => this.route.navigate(['/gerencia-usuario/usuario/dashboard']);
-
-  tipoChange(obj: DropdownStandard): boolean {
-    const roleValue = obj.value;
-    if (roleValue == 2 || roleValue == 1) {
-      this.f.baseIncidencia.enable();
-      return true;
-    } else {
-      this.f.baseIncidencia.setValue(null);
-      this.f.baseIncidencia.disable();
-      this.requiredCheck = false;
-      return false;
-    }
-  }
-
-  baseIncidenciaChange(obj: DropdownStandard): boolean {
-    const roleValue = obj.value;
-    if (roleValue == 2) { this.requiredCheck = true; return true } this.requiredCheck = false; return false;
-  }
 
   submitForm = (): void => {
     this.progressBarService.changeProgressBar(true);
@@ -122,20 +100,13 @@ export class UsuarioFormComponent implements OnInit {
     nome: [usuario.nome],
     email: [usuario.email],
     senha: [usuario.senha],
+    dataCadastro: [usuario.dataCadastro]
   })
 
   private blankForm = (): Usuario => {
     return {
       codigo: null,
       descricao: null,
-      tipo: null,
-      baseIncidencia: null,
-      icms: '',
-      icmsSt: '',
-      pis: '',
-      cofins: '',
-      ipi: '',
-      impostoImportacao: '',
     } as Usuario;
   }
 
@@ -143,10 +114,6 @@ export class UsuarioFormComponent implements OnInit {
     setTimeout(() => {
       this.progressBarService.changeProgressBar(false);
     }, 500)
-
-    if (this.tipoChange(this.f.tipo.value)) {
-      this.enableBaseIncidencia = true;
-    }
   }
 
   private saveForm = (obj: Usuario) => {

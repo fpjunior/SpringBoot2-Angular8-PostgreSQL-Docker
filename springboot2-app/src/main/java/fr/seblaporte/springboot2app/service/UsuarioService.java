@@ -1,5 +1,6 @@
 package fr.seblaporte.springboot2app.service;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -13,22 +14,15 @@ import fr.seblaporte.springboot2app.model.Usuario;
 import fr.seblaporte.springboot2app.repository.UsuarioRepository;
 import fr.seblaporte.springboot2app.util.DataUtil;
 
-import java.time.LocalDateTime;
-
 @Service
 public class UsuarioService {
 
 	@Autowired
 	private UsuarioRepository usuarioRepository;
-	@Autowired
-	private UsuarioRepository usuarioRespository;
 
 	public UsuarioDTO getUsuarioConf(Integer indicador) {
 		UsuarioDTO retorno = null;
-
 		Usuario item = usuarioRepository.findById(indicador).orElse(null);
-
-
 		return retorno;
 	}
 
@@ -36,18 +30,16 @@ public class UsuarioService {
 	public List<UsuarioDTO> buscarTodos(String filtro) {
 		List<UsuarioDTO> usuariosDTOs = new ArrayList<>();
 		// bucar todos os usuarios cadastros
-		List<Usuario> usuarios = this.usuarioRespository.buscarTodos(filtro);
+		List<Usuario> usuarios = this.usuarioRepository.buscarTodos(filtro);
 		// conveter tudo em dto;
 		usuarios.forEach((e) -> usuariosDTOs.add(this.toDTO(e)));
-		
 		return usuariosDTOs;
 	}
-
 
 	@Transactional(readOnly = true)
 	public UsuarioDTO buscarPorCodigo(Integer codigo) {
 		UsuarioDTO usuarioDTO = null;
-		Optional<Usuario> opUsuario = this.usuarioRespository.findById(codigo);
+		Optional<Usuario> opUsuario = this.usuarioRepository.findById(codigo);
 		if (opUsuario.isPresent()) {
 			usuarioDTO = this.toDTO(opUsuario.get());
 		}
@@ -67,13 +59,13 @@ public class UsuarioService {
 
 	private Usuario salvar(UsuarioDTO dto) {
 		Usuario usuario = this.toEntity(dto);
-		usuario = this.usuarioRespository.save(usuario);
+		usuario = this.usuarioRepository.save(usuario);
 		return usuario;
 	}
 
 	@Transactional
 	public void deletar(Integer codigo) {
-		this.usuarioRespository.deleteById(codigo);
+		this.usuarioRepository.deleteById(codigo);
 	}
 
 	private UsuarioDTO toDTO(Usuario entity) {
@@ -83,7 +75,7 @@ public class UsuarioService {
 		dto.setNome(entity.getNome());
 		dto.setEmail(entity.getEmail());
 		dto.setSenha(entity.getSenha());
-		dto.setDataSenha(DataUtil.converterToDataUtil(LocalDateTime.now().plusDays(1)));
+		dto.setDataCadastro(DataUtil.converterToDataUtil(LocalDateTime.now().plusDays(1)));
 		return dto;
 	}
 
@@ -94,7 +86,7 @@ public class UsuarioService {
 		Usuario entity = null;
 
 		if (dto.getCodigo() != null)
-			entity = usuarioRespository.findById(dto.getCodigo()).orElse(null);
+			entity = usuarioRepository.findById(dto.getCodigo()).orElse(null);
 
 		if (entity == null) {
 			entity = new Usuario();

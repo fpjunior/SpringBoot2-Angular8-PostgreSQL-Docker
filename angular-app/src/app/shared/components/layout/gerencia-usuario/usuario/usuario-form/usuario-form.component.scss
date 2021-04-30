@@ -20,8 +20,18 @@
     padding-left: 25px;
   }
 
+  input#Código {
+    width: 88px !important;
+}
+
   section.p-grid.p-jc-center {
     height: 46px;
-    padding-top: 453px;
+    padding-top: 90px;
   }
+
+
+
+  .form-label.ng-untouched.ng-pristine.ng-invalid {
+    margin-left: 15px;
+}
 }
