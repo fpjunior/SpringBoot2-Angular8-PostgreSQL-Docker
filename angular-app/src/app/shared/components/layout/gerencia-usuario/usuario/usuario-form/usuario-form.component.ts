@@ -10,7 +10,6 @@ import { tryCatchError } from 'src/app/shared/utils/erro-handler.util';
 import { UsuarioService } from '../service/usuario.service';
 import { Usuario } from './model/usuario-form.model';
 
-
 @Component({
   selector: 'app-usuario-form',
   templateUrl: './usuario-form.component.html',

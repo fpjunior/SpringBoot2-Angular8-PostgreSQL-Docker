@@ -102,18 +102,25 @@
 </div>
 
 <div class="group-button">
-  <form [formGroup]="configIndicadorForm" (ngSubmit)="submitConfiguracaoIndicadores()">
-    <div class="p-t-15em">
-      <p-button class="restore-default" [disabled]="activeRestoreDefault" type="button" class="standard"
-        (onClick)="restoreDefault()" icon="fa fa-undo" label="Restaurar Padrão">
-      </p-button>
-      <generic-buttons model="steps" hiddenMiddle [formGroup]="configIndicadorForm" [canceled]="true"
-        (cancelEvent)="cancelForm()" (previousEvent)="previousEvent()" (nextEvent)="nextEvent()"
-        [disableNext]="disableNext" [disableSubmit]="f['confDataProximaAtualizacao'].value < minDate"
-        [activeIndex]="activeIndex" [canceled]="true">
-      </generic-buttons>
-    </div>
-  </form>
+  <form [formGroup]="configIndicadorForm" (ngSubmit)="submitConfiguracaoIndicadores()" class="ng-star-inserted formGroup">
+    <p-button class="restore-default" [disabled]="activeRestoreDefault" type="button" class="standard"
+      (onClick)="restoreDefault()" icon="fa fa-undo" label="Restaurar Padrão">
+    </p-button>
+
+    <p-button type="button" class="dismiss" canceled="true" (onClick)="cancelForm()" icon="fa fa-times-circle" [label]="'Cancelar'">
+    </p-button>
+
+    <p-button type="submit" [disabled]="f['confDataProximaAtualizacao'].value < minDate" class="dismiss"  icon="fas fa-save" [label]="'Salvar'">
+    </p-button>
+
+    <p-button type="button" class="dismiss"
+    [disabled]="disablePrevious" (onClick)="previousEvent()"  icon="fas fa-arrow-left" [label]="'Anterior'">
+    </p-button>
+
+    <p-button type="button" [disabled]="disableNext" class="dismiss" (onClick)="nextEvent()" icon="fas fa-arrow-right" [label]="'Próximo'">
+    </p-button>
+
+</form>
 </div>
 
 <app-confirm-dialog (onClose)="onHideDialogConfirm()" (confirmEvent)="confirmExit()"

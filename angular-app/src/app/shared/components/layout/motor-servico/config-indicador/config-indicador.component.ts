@@ -43,6 +43,7 @@ export class ConfigIndicadorComponent implements OnInit {
   critico: string;
   disableSubmit = true;
   disableNext: boolean;
+  disablePrevious = true;
   codigoDivergenciaPreco = 1
   valuePlaceHolder: string;
   msgInvalid = 'Não é permitido valores superiores a 24:00.';
@@ -352,12 +353,14 @@ export class ConfigIndicadorComponent implements OnInit {
   previousEvent() {
     this.activeIndex--;
     this.disableNext = false;
+    this.disablePrevious = true;
     this.activeButtonRestoreDefault()
   }
 
   nextEvent() {
     this.activeIndex++;
     this.disableNext = true;
+    this.disablePrevious = false;
     this.activeButtonRestoreDefault();
   }
 

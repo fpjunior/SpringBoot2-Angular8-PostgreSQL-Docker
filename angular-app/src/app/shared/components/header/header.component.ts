@@ -47,35 +47,9 @@ export class HeaderComponent implements OnInit {
 
   private initMenu = (): MenuItem[] =>
     (this.items = [
-      {
-        label: 'Cadastro de Eventos',
-        icon: 'fas fa-cogs fa-lg:1em',
-        disabled: false,
-        items: [
-          {
-            style: { 'margin-left': '0px' },
-            label: 'Eventos',
-            icon: 'fas fa-file-export fa-lg:1em',
-            command: () => {
-              this.visibleSidebar = false;
-              this.route.navigate(['/home/eventos']);
-            },
-          },
-       
-          { separator: true },
-        ],
-      },
 
       {
-        label: 'Cadastro de Eventos',
-        icon: 'fas fa-laptop fa-lg:1em',
-        command: () => {
-          this.visibleSidebar = false;
-          this.route.navigate(['/home/eventos']);
-        },
-      },
-      {
-        label: 'Example',
+        label: 'Example Output-property',
         icon: 'fas fa-laptop fa-lg:1em',
         command: () => {
           this.visibleSidebar = false;
@@ -83,7 +57,7 @@ export class HeaderComponent implements OnInit {
         },
       },
       {
-        label: 'Chamar Example2',
+        label: 'Example submenu',
         icon: 'fas fa-exchange-alt fa-lg:1em',
         items: [
           {
@@ -132,7 +106,7 @@ export class HeaderComponent implements OnInit {
         label: 'Motor de Serviço',
         icon: 'fas fa-exchange-alt fa-lg:1em',
         items: [
-         
+
           {
             style: { 'margin-left': '0px' },
             label: 'Config Indicadores',
@@ -188,9 +162,9 @@ export class HeaderComponent implements OnInit {
           { separator: true },
         ],
       },
-      
 
-     
+
+
     ]);
 
 }
